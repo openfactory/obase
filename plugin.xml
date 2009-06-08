@@ -1,0 +1,36 @@
+<plugin name='ubase' version='0.1.1' grailsVersion='1.1.1 &gt; *'>
+  <author>Mike P. Kuhl</author>
+  <authorEmail>mk@uenterprise.de</authorEmail>
+  <title>ue/ep ubase plugin</title>
+  <description>base objects and functions needed by all ue/ep applications</description>
+  <documentation>http://dev.uenterprise.de/ep/grails/plugins/ubase</documentation>
+  <resources>
+    <resource>BootStrap</resource>
+    <resource>Config</resource>
+    <resource>DataSource</resource>
+    <resource>UrlMappings</resource>
+    <resource>de.uenterprise.ep.EntityController</resource>
+    <resource>de.uenterprise.ep.UserController</resource>
+    <resource>de.uenterprise.ep.Entity</resource>
+    <resource>de.uenterprise.ep.EntitySuperType</resource>
+    <resource>de.uenterprise.ep.EntityTagLink</resource>
+    <resource>de.uenterprise.ep.EntityType</resource>
+    <resource>de.uenterprise.ep.EpSystem</resource>
+    <resource>de.uenterprise.ep.Link</resource>
+    <resource>de.uenterprise.ep.LinkSuperType</resource>
+    <resource>de.uenterprise.ep.LinkType</resource>
+    <resource>de.uenterprise.ep.Profile</resource>
+    <resource>de.uenterprise.ep.profiles.CityProfile</resource>
+    <resource>de.uenterprise.ep.profiles.GenericProfile</resource>
+    <resource>de.uenterprise.ep.profiles.PersonProfile</resource>
+    <resource>de.uenterprise.ep.Tag</resource>
+    <resource>de.uenterprise.ep.TagLinkType</resource>
+    <resource>de.uenterprise.ep.User</resource>
+    <resource>de.uenterprise.ep.DefaultObjectsService</resource>
+    <resource>de.uenterprise.ep.EntityHelperService</resource>
+    <resource>UBaseCoreTagLib</resource>
+  </resources>
+  <dependencies>
+    <plugin name='jquery' version='1.0RC2b' />
+  </dependencies>
+</plugin>

@@ -1,0 +1,46 @@
+
+html, body {
+    height: 100%;
+    background-color:aliceblue;
+    margin:5px;
+}
+
+#doc4, #bd {
+    height: 90%;
+}
+#bd {
+  margin-top:0px;
+}
+
+#hd {
+  border-bottom: 4px solid gray;
+}
+
+#headline {
+  font-size:36px;
+  font-family:sans-serif;
+  text-align:right;
+  padding-top:1em;
+  color:#005A7C
+}
+
+#navigation{
+  border:1px solid gainsboro;
+  /*margin-top:15px;*/
+}
+#navigation ul {
+  margin-top:5px;
+  margin-left:10px;
+  color:red;
+}
+#navigation ul li {
+  padding:0.33em
+}
+
+#status {
+  /*display:none;*/
+  margin-top:5px;
+  margin-bottom:10px;
+  text-align:right;
+}
+

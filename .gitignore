@@ -1,0 +1,13 @@
+out/
+test/reports	
+*.iml
+*.iws
+*.ipr
+*.launch
+*.tmproj
+*.launch
+.classpath
+.project
+.settings/
+stacktrace.log
+web-app/plugins

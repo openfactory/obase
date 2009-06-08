@@ -1,0 +1,40 @@
+/*
+ basic styles included in all apps first
+*/
+
+/*
+  reset
+*/
+html * {
+    margin: 0;
+    padding:0;
+}
+
+
+/*
+  container: "body" div encloses all managed content - defined in layout
+*/
+#container {
+  /*height:768px;*/
+  /*width:1024px;*/
+  margin: auto;
+  margin-left:10%;
+  margin-right:10%;
+  height:768px;
+
+  padding:10px;
+  margin-top:0.5em;
+  opacity:0.85;
+  color:black;
+  background-color:antiquewhite;
+  font-family:sans-serif;
+  font-size:12px;
+}
+
+#container h2 {
+  color:dodgerblue;
+  font-weight:normal;
+  margin-bottom:10px;
+}
+
+
