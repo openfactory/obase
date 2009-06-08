@@ -4,6 +4,15 @@ class UBaseCoreTagLib {
 
 
    /**
+   * returns a url to a plugin plugin resource
+    */
+    def resource = {attrs->
+      def url = g.resource (dir:"$pluginContextPath/$attrs.dir/", attrs.file)
+      out << url
+    }
+
+
+   /**
     * returns the 'style' that is in use. affects in turn the layout,css,js tags
     *  -> first looks for a request parameter with the name 'layout'
     *    -> looks for an 'ue.default.layout' parameter from config.groovy
@@ -12,7 +21,7 @@ class UBaseCoreTagLib {
   def styleName = {attrs->
     def name = params.style
     if (!name)
-      name = grailsApplication.config.de.uenterprise.ep.defaultStyle ?: 'ustd'
+      name = grailsApplication.config.de.uenterprise.ep.defaultStyle ?: 'grailsdefault'
 
     out << name
   }
@@ -23,7 +32,8 @@ class UBaseCoreTagLib {
    */
   def styleResource = {attrs->
     def name = styleName()
-    def url = g.resource (dir:"styles/$name", file:attrs.file)
+    def resourcedir = pluginContextPath
+    def url = g.resource (dir:"$pluginContextPath/styles/$name", file:attrs.file)
     out << url
   }
 

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>u.enterprise <g:layoutTitle default="Grails"/></title>
-  <link rel="stylesheet" href="${resource(dir: 'css', file: 'yui-reset-fonts-grids.css')}"/>
+  <link rel="stylesheet" href="${ub.resource(dir:'css', file: 'yui-reset-fonts-grids.css')}"/>
   <link rel="stylesheet" href="${ub.styleResource(file: "main.css")}"/>
   <link rel="stylesheet" href="${ub.styleResource(file: "custom.css")}"/>
   <link rel="shortcut icon" type="image/x-icon" href="${ub.styleResource(file: "favicon.ico")}"/>
@@ -17,7 +17,7 @@
       <div id="logo" class="yui-u first">
         <a href="${createLinkTo(dir:"")}">
           <img src="${ub.styleResource(file: 'grails_logo.gif')}" alt="Grails" />
-        </a>  
+        </a>
       </div>
       <div id="headline" class="yui-u">
         u.enterprise
