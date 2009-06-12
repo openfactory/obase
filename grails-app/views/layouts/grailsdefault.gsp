@@ -59,7 +59,8 @@
 
   </div>
   <div id="ft" role="contentinfo">
-    <p>powered by u.enterprise</p>
+    <p><g:meta name="app.name"/> version <g:meta name="app.version"/>, &copy 2008-2009 by u.enterprise</p>
+    <p></p>
   </div>
 </div>
 </body>
