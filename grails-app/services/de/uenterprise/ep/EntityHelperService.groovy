@@ -10,7 +10,10 @@ import de.uenterprise.ep.profiles.PersonProfile
  */
 
 public class EntityHelperService {
+  def authenticateService
+
   static transactional = true
+
 
 
 /**
@@ -37,7 +40,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
 */
   Entity createEntityWithUser (String name, EntityType type, String emailAddr, Closure c=null) {
     createEntity(name, type) {Entity ent->
-      ent.user = new Account (email:emailAddr)
+      ent.user = new Account (email:emailAddr, password:authenticateService.encodePassword("pass"), enabled:true)
       if (c) c.call (ent)
     }
   }

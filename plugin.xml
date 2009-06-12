@@ -8,9 +8,13 @@
     <resource>BootStrap</resource>
     <resource>Config</resource>
     <resource>DataSource</resource>
+    <resource>SecurityConfig</resource>
     <resource>UrlMappings</resource>
     <resource>de.uenterprise.ep.EntityController</resource>
     <resource>de.uenterprise.ep.UserController</resource>
+    <resource>LoginController</resource>
+    <resource>LogoutController</resource>
+    <resource>de.uenterprise.ep.Account</resource>
     <resource>de.uenterprise.ep.Entity</resource>
     <resource>de.uenterprise.ep.EntitySuperType</resource>
     <resource>de.uenterprise.ep.EntityTagLink</resource>
@@ -23,14 +27,18 @@
     <resource>de.uenterprise.ep.profiles.CityProfile</resource>
     <resource>de.uenterprise.ep.profiles.GenericProfile</resource>
     <resource>de.uenterprise.ep.profiles.PersonProfile</resource>
+    <resource>de.uenterprise.ep.Role</resource>
     <resource>de.uenterprise.ep.Tag</resource>
     <resource>de.uenterprise.ep.TagLinkType</resource>
-    <resource>de.uenterprise.ep.Account</resource>
+    <resource>DummyUser</resource>
+    <resource>Requestmap</resource>
     <resource>de.uenterprise.ep.DefaultObjectsService</resource>
     <resource>de.uenterprise.ep.EntityHelperService</resource>
     <resource>UBaseCoreTagLib</resource>
   </resources>
   <dependencies>
     <plugin name='jquery' version='1.0RC2b' />
+    <plugin name='navigation' version='1.0.4 &gt; *' />
+    <plugin name='acegi' version='0.5 &gt; *' />
   </dependencies>
 </plugin>

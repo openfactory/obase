@@ -7,7 +7,9 @@ package de.uenterprise.ep
  */
 
 public class Account {
-  static belongsTo = [ entity : Entity ]
+  static belongsTo = [ entity : Entity]
+  static hasMany = [authorities: Role]
+
 
   String email
   String password
