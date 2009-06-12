@@ -10,6 +10,7 @@ package de.uenterprise.ep
 
 public class EntityController {
   def scaffold = Entity
+  static navigation = true
 
 
 }

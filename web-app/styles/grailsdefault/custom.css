@@ -24,20 +24,23 @@ html, body {
   color:#005A7C
 }
 
-#navigation{
+#sidebar {
   border:1px solid gainsboro;
   /*margin-top:15px;*/
 }
-#navigation ul {
+#sidebar ul {
   margin-top:5px;
   margin-left:10px;
-  color:red;
 }
-#navigation ul li {
+#sidebar ul li {
   padding:0.33em
 }
 
 #status {
+  border-bottom:1px solid gray;  
+}
+
+#user-status {
   /*display:none;*/
   margin-top:5px;
   margin-bottom:10px;

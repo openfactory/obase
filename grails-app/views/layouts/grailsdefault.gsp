@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="${ub.styleResource(file: "main.css")}"/>
   <link rel="stylesheet" href="${ub.styleResource(file: "custom.css")}"/>
   <link rel="shortcut icon" type="image/x-icon" href="${ub.styleResource(file: "favicon.ico")}"/>
+  <nav:resources />
   <g:layoutHead/>
 </head>
 
@@ -26,9 +27,9 @@
   </div>
 
   <div id="bd" role="main">
-    <div class="yui-g">
+    <div id="status" class="yui-g">
       <div class="yui-u first"></div>
-      <div id="status" class="yui-ge">
+      <div id="user-status" class="yui-ge">
         <div class="yui-u first">
           your are logged in as <span>hugo@aol.com</span>
         </div>
@@ -37,13 +38,18 @@
         </div>
       </div>
     </div>
+
+    <div id="menu">
+      <nav:render/>
+    </div>
+
     <div id="yui-main">
       <div id="content" class="yui-b">
         <g:layoutBody/>
       </div>
     </div>
 
-    <div id="navigation" role="navigation" class="yui-b">
+    <div id="sidebar" role="addContent" class="yui-b">
       <ul>
         <li><a href="${createLinkTo(dir:"")}">Home</a></li>
         <li><g:link controller="entity" action="index">Manage Entities</g:link></li>
