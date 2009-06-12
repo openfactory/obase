@@ -6,10 +6,12 @@ package de.uenterprise.ep
  * Description:
  */
 
-public class User {
+public class Account {
   static belongsTo = [ entity : Entity ]
 
   String email
+  String password
+  boolean enabled
 
   static constraints = {
     email (email:true, nullable:false, blank:false, unique:true)

@@ -31,7 +31,7 @@ class EntityHelperServiceTests extends GrailsUnitTestCase {
 
     void testCreateEntityWithClosure () {
       Entity entity = entityHelperService.createEntity ("hugotest", krochaType) {Entity e->
-        e.user = new User (email:"hugotest@hshsgs.com")
+        e.user = new Account (email:"hugotest@hshsgs.com")
         assertNull e.id // it's not yet persisted
       }
 

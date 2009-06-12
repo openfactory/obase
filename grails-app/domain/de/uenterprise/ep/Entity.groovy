@@ -15,7 +15,7 @@ public class Entity {
   Date dateCreated
   Date lastUpdated
 
-  User user ;
+  Account user ;
   Profile profile ;
 
   static constraints = {

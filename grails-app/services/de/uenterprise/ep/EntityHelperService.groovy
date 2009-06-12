@@ -37,7 +37,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
 */
   Entity createEntityWithUser (String name, EntityType type, String emailAddr, Closure c=null) {
     createEntity(name, type) {Entity ent->
-      ent.user = new User (email:emailAddr)
+      ent.user = new Account (email:emailAddr)
       if (c) c.call (ent)
     }
   }

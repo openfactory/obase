@@ -47,7 +47,7 @@ class BasicEntityTests extends GrailsUnitTestCase {
    * creates an entry with an valid user
    */
   void testCreateEntryWithUser () {
-    User hugoUser = new User (email:"hugo@franzfranz.at")
+    Account hugoUser = new Account (email:"hugo@franzfranz.at")
     Entity e = new Entity (name:'hugo', type:krochaType, user:hugoUser)
 
     if (!e.validate()) {
