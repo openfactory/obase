@@ -39,11 +39,12 @@
       </div>
     </div>
 
-    <div id="menu">
-      <nav:render/>
-    </div>
 
     <div id="yui-main">
+      <div id="menu" class="yui-b">
+        <nav:render group="main"/>
+      </div>
+
       <div id="content" class="yui-b">
         <g:layoutBody/>
       </div>

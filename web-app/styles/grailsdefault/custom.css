@@ -24,9 +24,18 @@ html, body {
   color:#005A7C
 }
 
+#menu {
+  // border-bottom:1px solid gray;
+}
+
+#navigation_main {
+  width:80%;
+  margin:8px auto;
+}
+
 #sidebar {
   border:1px solid gainsboro;
-  /*margin-top:15px;*/
+  margin-top:8px;
 }
 #sidebar ul {
   margin-top:5px;
@@ -37,7 +46,7 @@ html, body {
 }
 
 #status {
-  border-bottom:1px solid gray;  
+  border-bottom:1px solid gray;
 }
 
 #user-status {
