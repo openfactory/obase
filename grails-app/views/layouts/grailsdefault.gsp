@@ -30,12 +30,23 @@
     <div id="status" class="yui-g">
       <div class="yui-u first"></div>
       <div id="user-status" class="yui-ge">
-        <div class="yui-u first">
-          your are logged in as <span>hugo@aol.com</span>
-        </div>
-        <div class="yui-u">
-          <g:link controller="security" action="logout">logout</g:link>
-        </div>
+        <g:isLoggedIn>
+          <div class="yui-u first">
+            your are logged in as <span><g:loggedInUserInfo field="email"/></span>
+          </div>
+          <div class="yui-u">
+            <g:link controller="logout " action="index">logout</g:link>
+          </div>
+        </g:isLoggedIn>
+        <g:isNotLoggedIn>
+          <div class="yui-u first">
+            your are currently not logged in</span>
+          </div>
+          <div class="yui-u">
+            <g:link controller="login " action="auth">login</g:link>
+          </div>
+
+        </g:isNotLoggedIn>
       </div>
     </div>
 

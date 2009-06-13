@@ -40,7 +40,12 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
 */
   Entity createEntityWithUser (String name, EntityType type, String emailAddr, Closure c=null) {
     createEntity(name, type) {Entity ent->
+      def role = Role.findByAuthority("ROLE_USER")
+      if (!role)
+        throw new EntityException(message:"cannot create user account. ROLE_USER not found", entity:ent)
+
       ent.user = new Account (email:emailAddr, password:authenticateService.encodePassword("pass"), enabled:true)
+      ent.user.addToAuthorities (role)
       if (c) c.call (ent)
     }
   }

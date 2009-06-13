@@ -31,7 +31,6 @@
     <resource>de.uenterprise.ep.Tag</resource>
     <resource>de.uenterprise.ep.TagLinkType</resource>
     <resource>DummyUser</resource>
-    <resource>Requestmap</resource>
     <resource>de.uenterprise.ep.DefaultObjectsService</resource>
     <resource>de.uenterprise.ep.EntityHelperService</resource>
     <resource>UBaseCoreTagLib</resource>

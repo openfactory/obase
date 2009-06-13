@@ -33,7 +33,7 @@ grails.converters.encoding="UTF-8"
 grails.enable.native2ascii = true
 
 
-de.uenterprise.ep.defaultStyle='grailsdefault'  
+de.uenterprise.ep.defaultStyle='grailsdefault'
 
 
 // set per-environment serverURL stem for creating absolute links
@@ -76,6 +76,8 @@ log4j = {
     debug  'grails.app.bootstrap'
     debug  'grails.app.controller'
     debug  'grails.app.dataSource'
+
+    debug  'org.springframework.security'
 
 }
 

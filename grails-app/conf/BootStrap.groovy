@@ -42,8 +42,13 @@ class BootStrap {
     }
     log.debug ("entity structure created successfully")
 
-    // create some actual entities
 
+    // create security roles (needed for user creation)
+    new Role(authority:"ROLE_USER", description:"regular user").save()
+    new Role(authority:"ROLE_VIP", description:"user with some extra privileges").save()
+    new Role(authority:"ROLE_ADMIN", description:"system administrator").save()
+
+    // create some actual entities
     entityHelperService.createEntityWithUser("detlef", etKrocher, "detleft@aon.at", null)
     if (false) {
       etKrocher.addToEntities (new Entity(name:"detlef")).save()
