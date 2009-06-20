@@ -11,6 +11,7 @@ import de.uenterprise.ep.profiles.PersonProfile
 
 public class EntityHelperService {
   def authenticateService
+  def profileHelperService
 
   static transactional = true
 
@@ -36,7 +37,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
 
 
 /**
-* creates an entity with an user
+* creates an entity with an account
 */
   Entity createEntityWithUser (String name, EntityType type, String emailAddr, Closure c=null) {
     createEntity(name, type) {Entity ent->
@@ -44,21 +45,39 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
       if (!role)
         throw new EntityException(message:"cannot create user account. ROLE_USER not found", entity:ent)
 
+
       ent.user = new Account (email:emailAddr, password:authenticateService.encodePassword("pass"), enabled:true)
       ent.user.addToAuthorities (role)
       if (c) c.call (ent)
     }
   }
 
+  /**
+   * creates an entity with account and matching profile accoring to supertype
+   */
   Entity createEntityWithUserAndProfile (String name, EntityType type, String emailAddr, String fullName, Closure c=null) {
     createEntityWithUser (name, type, emailAddr) {Entity ent->
-      ent.profile = new Profile (fullName:fullName)
+      ent.profile = profileHelperService.createProfileFor(ent)
+      ent.profile.fullName = fullName
+      ent.profile.tagline  = "describe yourself in 25 words or less!"
       if (c) c.call (ent)
     }
   }
 
   EntitySuperType getPersonSuperType () {
     return EntitySuperType.findByName ("Person")
+  }
+
+  /**
+   * get Entity for currently logged in user account (if any)
+   */
+  Entity getLoggedIn () {
+    def account = authenticateService.userDomain() ;
+    if (!account)
+      throw new EntityException ("no account is currently logged in.")
+
+    account = Account.get (account.id)
+    return (account.entity)
   }
 }
 

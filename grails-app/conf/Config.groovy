@@ -76,8 +76,9 @@ log4j = {
     debug  'grails.app.bootstrap'
     debug  'grails.app.controller'
     debug  'grails.app.dataSource'
+    debug  'grails.app.service'
 
-    debug  'org.springframework.security'
+    info   'org.springframework.security'
 
 }
 

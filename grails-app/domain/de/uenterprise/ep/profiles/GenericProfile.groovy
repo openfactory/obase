@@ -12,7 +12,12 @@ import de.uenterprise.ep.Profile
 public class GenericProfile extends Profile
 {
   byte[] profilePic
-  String tagLine 
   String description
+
+  static constraints = {
+    description (nullable:true)
+    profilePic (nullable:true)
+  }
+
 
 }

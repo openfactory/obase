@@ -25,7 +25,7 @@ html, body {
 }
 
 #menu {
-  // border-bottom:1px solid gray;
+   border-bottom:1px solid gray;
 }
 
 #navigation_main {
@@ -49,11 +49,9 @@ html, body {
   border-bottom:1px solid gray;
 }
 
-#user-status {
-  /*display:none;*/
-  margin-top:5px;
-  margin-bottom:10px;
-  text-align:right;
+#content {
+  margin-top:1.4em;
+  font-size:116%;
 }
 
 #ft {
@@ -61,5 +59,40 @@ html, body {
   color:gray;
   text-align:center;
 }
+
+
+
+/*
+  styles for the various status line elements
+*/
+#status #flashmsg {
+  font-size:87%;
+  margin-top:5px;
+  margin-bottom:auto;
+  color:darkorange;
+}
+
+#status #not-logged-in {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  text-align:right;
+}
+
+#status #not-logged-in input {
+  border: 1px solid lightgray;
+  font-size: 87%;
+  width:70px;
+
+}
+
+#status #logged-in {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  margin-top:5px;
+
+  margin-bottom:5px;
+  text-align:right;
+}
+
 
 

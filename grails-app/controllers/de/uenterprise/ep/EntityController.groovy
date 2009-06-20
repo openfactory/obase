@@ -11,6 +11,6 @@ package de.uenterprise.ep
 public class EntityController {
   def scaffold = Entity
   static navigation = [group:'main',
-                          order:10, title:'Entities', action:'list']
+                          order:50, title:'Entities', action:'list']
 
 }

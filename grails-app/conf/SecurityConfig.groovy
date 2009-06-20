@@ -12,6 +12,8 @@ security {
   password = "password"
   enabled  = "enabled"
 
+  loginFormUrl="/"
+  defaultTargetUrl="/dashboard"
   /*
   requestMapString = '''
     CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
@@ -30,6 +32,7 @@ security {
   requestMapString = '''
     CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
     PATTERN_TYPE_APACHE_ANT
+    /dashboard/**=IS_AUTHENTICATED_REMEMBERED
     /admin/**=ROLE_ADMIN
     /entity/**=IS_AUTHENTICATED_FULLY
     /user/**=IS_AUTHENTICATED_REMEMBERED

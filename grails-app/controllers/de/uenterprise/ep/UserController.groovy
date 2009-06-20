@@ -4,7 +4,7 @@ class UserController {
   def scaffold = Account
 
   static navigation = [group:'main',
-          order:10, title:'Users', action:'list']
+          order:50, title:'Users', action:'list']
 
 
 

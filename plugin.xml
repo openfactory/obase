@@ -10,6 +10,7 @@
     <resource>DataSource</resource>
     <resource>SecurityConfig</resource>
     <resource>UrlMappings</resource>
+    <resource>de.uenterprise.ep.DashboardController</resource>
     <resource>de.uenterprise.ep.EntityController</resource>
     <resource>de.uenterprise.ep.UserController</resource>
     <resource>LoginController</resource>
@@ -30,9 +31,9 @@
     <resource>de.uenterprise.ep.Role</resource>
     <resource>de.uenterprise.ep.Tag</resource>
     <resource>de.uenterprise.ep.TagLinkType</resource>
-    <resource>DummyUser</resource>
     <resource>de.uenterprise.ep.DefaultObjectsService</resource>
     <resource>de.uenterprise.ep.EntityHelperService</resource>
+    <resource>de.uenterprise.ep.ProfileHelperService</resource>
     <resource>UBaseCoreTagLib</resource>
   </resources>
   <dependencies>

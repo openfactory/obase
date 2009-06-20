@@ -28,26 +28,33 @@
 
   <div id="bd" role="main">
     <div id="status" class="yui-g">
-      <div class="yui-u first"></div>
-      <div id="user-status" class="yui-ge">
+      <div id="flashmsg" class="yui-u first">
+        <g:if test="${flash.message}">
+          ${flash.message}
+        </g:if>
+      </div>
         <g:isLoggedIn>
-          <div class="yui-u first">
-            your are logged in as <span><g:loggedInUserInfo field="email"/></span>
-          </div>
-          <div class="yui-u">
-            <g:link controller="logout " action="index">logout</g:link>
+          <div id="logged-in" class="yui-ge">
+            <div class="yui-u first">
+              logged in as <span><g:loggedInUserInfo field="email"/></span>
+            </div>
+            <div class="yui-u">
+              <g:link controller="logout" action="index">logout</g:link>
+            </div>
           </div>
         </g:isLoggedIn>
-        <g:isNotLoggedIn>
-          <div class="yui-u first">
-            your are currently not logged in</span>
-          </div>
-          <div class="yui-u">
-            <g:link controller="login " action="auth">login</g:link>
-          </div>
 
+        <g:isNotLoggedIn>
+            <div id="not-logged-in" class="yui-u">
+              <form action="${resource (file:'j_spring_security_check')}" method="POST">
+                <label for="j_username">user-id</label>
+                <g:textField name="j_username"></g:textField>
+                <label for="j_password">user-id</label>
+                <g:passwordField  name="j_password"></g:passwordField>
+                <g:submitButton name="login" value="Log-In"></g:submitButton>
+              </form>
+            </div>
         </g:isNotLoggedIn>
-      </div>
     </div>
 
 

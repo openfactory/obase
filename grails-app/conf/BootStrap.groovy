@@ -1,4 +1,5 @@
 import de.uenterprise.ep.*
+import de.uenterprise.ep.profiles.PersonProfile
 
 class BootStrap {
     def   sessionFactory
@@ -49,19 +50,20 @@ class BootStrap {
     new Role(authority:"ROLE_ADMIN", description:"system administrator").save()
 
     // create some actual entities
-    entityHelperService.createEntityWithUser("detlef", etKrocher, "detleft@aon.at", null)
-    if (false) {
-      etKrocher.addToEntities (new Entity(name:"detlef")).save()
-      etKrocher.addToEntities (new Entity(name:"rod")).save()
-      etKrocher.addToEntities (new Entity(name:"mary")).save()
-
-      etRocker.addToEntities (new Entity(name:"rock")).save()
-      etRocker.addToEntities (new Entity(name:"hans")).save()
-      etRocker.addToEntities (new Entity(name:"smoky")).save()
-
-      etEmo.addToEntities (new Entity(name:"kant")).save()
-      etEmo.addToEntities (new Entity(name:'rollo')).save()
-      etEmo.addToEntities (new Entity(name:"max")).save()
+    entityHelperService.createEntityWithUserAndProfile ("franz", etKrocher, "franz@bbb.com", "Franz Franz and the Melody Boys") {Entity it->
+      it.profile.tagline = "to be on top is our job"
+      it.profile.gender = 1 ;
     }
+
+    entityHelperService.createEntityWithUserAndProfile("detlef", etEmo, "detleft@aon.at", "Captain Sensible") {Entity ent->
+      def admin = Role.findByAuthority("ROLE_ADMIN")
+      assert admin
+      ent.user.addToAuthorities (admin)
+    }
+
+
+    entityHelperService.createEntityWithUserAndProfile("hugo", etRocker, "karwall@bxlxax.fr", "Hugo Tester")
+    entityHelperService.createEntityWithUserAndProfile("otto", etRocker, "ottor@bulag.net", "Otto R. Kaputnik")
+
   }
 }

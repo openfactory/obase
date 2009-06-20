@@ -20,6 +20,7 @@ public class PersonProfile extends GenericProfile
   static constraints = {
     profession (nullable:true)
     hobbies (nullable:true)
+    birthday (nullable:true)
   }
 
 }
