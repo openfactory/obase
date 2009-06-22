@@ -2,12 +2,14 @@
 <html>
 <head>
   <title>u.enterprise <g:layoutTitle default="Grails"/></title>
-  <link rel="stylesheet" href="${ub.resource(dir:'css', file: 'yui-reset-fonts-grids.css')}"/>
-  <link rel="stylesheet" href="${ub.styleResource(file: "main.css")}"/>
-  <link rel="stylesheet" href="${ub.styleResource(file: "custom.css")}"/>
-  <link rel="shortcut icon" type="image/x-icon" href="${ub.styleResource(file: "favicon.ico")}"/>
-  <nav:resources />
+  %{--<link rel="stylesheet" href="${ub.resource(dir:'css', file: 'yui-reset-fonts-grids.css')}"/>--}%
+  %{--<link rel="stylesheet" href="${ub.styleResource(file: "main.css")}"/>--}%
+  %{--<link rel="stylesheet" href="${ub.styleResource(file: "custom.css")}"/>--}%
+  %{--<link rel="shortcut icon" type="image/x-icon" href="${ub.styleResource(file: "favicon.ico")}"/>--}%
+  <ub:resources grailscss="${request.grailscss}"/>
+  %{--<nav:resources />--}%
   <g:layoutHead/>
+  %{--<g:set scope="request" var="navmenu" value="main"/>--}%
 </head>
 
 <body>
@@ -60,7 +62,8 @@
 
     <div id="yui-main">
       <div id="menu" class="yui-b">
-        <nav:render group="main"/>
+        <nav:render group="${request.navmenu ?: 'main'}"/>
+		    %{--<nav:renderSubItems group="main"/>--}%
       </div>
 
       <div id="content" class="yui-b">
@@ -73,11 +76,11 @@
         <li><a href="${createLinkTo(dir:"")}">Home</a></li>
         <li><g:link controller="entity" action="index">Manage Entities</g:link></li>
         <li><g:link controller="user" action="index">Manage Users</g:link></li>
-        <li><a href="#">Link3</a></li>
-        <li><a href="#">Link4</a></li>
-        <li><a href="#">Link5</a></li>
-        <li><a href="#">Link6</a></li>
-        <li><a href="#">Link7</a></li>
+        <li><a href="grailsdefault.gsp#">Link3</a></li>
+        <li><a href="grailsdefault.gsp#">Link4</a></li>
+        <li><a href="grailsdefault.gsp#">Link5</a></li>
+        <li><a href="grailsdefault.gsp#">Link6</a></li>
+        <li><a href="grailsdefault.gsp#">Link7</a></li>
         <li><g:link controller="user" action="index">About...</g:link></li>
       </ul>
     </div>

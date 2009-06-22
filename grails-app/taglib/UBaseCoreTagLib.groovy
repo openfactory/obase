@@ -37,11 +37,26 @@ class UBaseCoreTagLib {
     out << url
   }
 
+
+   /**
+    * renders all needed (style)Resources
+    */
+  def resources = {attrs->
+    out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.resource(dir:'css', file: 'yui-reset-fonts-grids.css')}\"/>"
+    if (attrs.grailscss == 'true')
+      out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.styleResource(file: "grails.css")}\"/>"
+
+    out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.styleResource(file: "layout.css")}\"/>"
+    out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.styleResource(file: "forms.css")}\"/>"
+    out << "<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"${ub.styleResource(file: "favicon.ico")}\"/>"
+    out << nav.resources()
+  }
+
   /**
   * returns the name of the (default) layout to use based on the current style
    */
   def layoutName = {attrs->
-    out << styleName()
+    out << "styles/${styleName()}"
   }
 
   def layout = {attrs->

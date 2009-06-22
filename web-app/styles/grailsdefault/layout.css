@@ -94,5 +94,10 @@ html, body {
   text-align:right;
 }
 
+/* hide subnavigation in grails default scaffolding */
+#content .nav {
+  display:none;
+}
+
 
 

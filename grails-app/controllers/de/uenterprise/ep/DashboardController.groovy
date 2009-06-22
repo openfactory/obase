@@ -6,7 +6,12 @@ class DashboardController {
   def profileHelperService
 
   static navigation = [group:'main',
-                          order:10, title:'Dashboard', action:'index']
+                          order:10, title:'Dashboard', action:'index',
+                subItems: [
+                      [action:'test3', order:1, title:"dashboard action 3"],
+                    ]
+
+  ]
 
     def index = {
       if (!params.id)  {
@@ -31,6 +36,11 @@ class DashboardController {
         return
       }
       return [entity:ent]
+    }
+
+
+    def test3 = {
+
     }
 
 }
