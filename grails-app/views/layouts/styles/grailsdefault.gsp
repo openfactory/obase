@@ -2,14 +2,8 @@
 <html>
 <head>
   <title>u.enterprise <g:layoutTitle default="Grails"/></title>
-  %{--<link rel="stylesheet" href="${ub.resource(dir:'css', file: 'yui-reset-fonts-grids.css')}"/>--}%
-  %{--<link rel="stylesheet" href="${ub.styleResource(file: "main.css")}"/>--}%
-  %{--<link rel="stylesheet" href="${ub.styleResource(file: "custom.css")}"/>--}%
-  %{--<link rel="shortcut icon" type="image/x-icon" href="${ub.styleResource(file: "favicon.ico")}"/>--}%
   <ub:resources grailscss="${request.grailscss}"/>
-  %{--<nav:resources />--}%
   <g:layoutHead/>
-  %{--<g:set scope="request" var="navmenu" value="main"/>--}%
 </head>
 
 <body>
@@ -92,16 +86,4 @@
   </div>
 </div>
 </body>
-
-<!--
-    <body>
-        <div id="spinner" class="spinner" style="display:none;">
-            <img src="${ub.styleResource(file: 'spinner.gif')}" alt="Spinner" />
-        </div>
-        <div class="logo"><img src="${ub.styleResource(file: 'grails_logo.jpg')}" alt="Grails" /></div>
-        <div id="container">
-        <g:layoutBody/>
-        </div>
-    </body>
-    -->
 </html>
