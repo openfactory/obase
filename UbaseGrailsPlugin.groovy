@@ -1,7 +1,8 @@
 class UbaseGrailsPlugin {
     def version = "0.1.1"
     def grailsVersion = "1.1.1 > *"
-    def dependsOn = [jquery:"1.0RC2b", navigation:"1.0.4 > *", acegi:"0.5 > *"]
+    def dependsOn = [navigation:'1.1 > *', jquery:'1.3.2.4 > *', acegi:'0.5.1 > *']
+
 
     def pluginExcludes = [
             "grails-app/views/error.gsp"

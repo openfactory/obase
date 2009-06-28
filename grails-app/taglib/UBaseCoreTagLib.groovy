@@ -4,10 +4,18 @@ class UBaseCoreTagLib {
 
 
    /**
-   * returns a url to a plugin plugin resource
+   * returns a url to a application resource if exists - plugin resource otherwise
     */
     def resource = {attrs->
-      def url = g.resource (dir:"$pluginContextPath/$attrs.dir/", attrs.file)
+      def path = "$attrs.dir/$attrs.file"
+      def url
+      if (grailsApplication.mainContext.getResource(path).exists())
+        url = g.resource (dir:"$attrs.dir", attrs.file)
+      else
+        url = g.resource (dir:"$pluginContextPath/$attrs.dir/", attrs.file)
+
+      log.debug "loading ubase resource '$path' from $url"
+
       out << url
     }
 
@@ -31,9 +39,16 @@ class UBaseCoreTagLib {
    * returns a web resource relative to the current style directoty
    */
   def styleResource = {attrs->
-    def name = styleName()
-    def resourcedir = pluginContextPath
-    def url = g.resource (dir:"$pluginContextPath/styles/$name", file:attrs.file)
+    def path = "styles/${styleName()}"
+
+    def url
+    if (grailsApplication.mainContext.getResource("$path/$attrs.file").exists())
+      url = g.resource (dir:"$path", file:attrs.file)
+    else
+      url = g.resource (dir:"$pluginContextPath/$path", file:attrs.file)
+
+    log.debug "loading ubase 'style' resource '$attrs.file' from $url"
+
     out << url
   }
 
