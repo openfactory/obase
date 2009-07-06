@@ -1,7 +1,8 @@
 class UrlMappings {
     static mappings = {
 
-      "/dashboard/$id?" {
+
+      "/start/$id?" {
         controller = "dashboard"
       }
 

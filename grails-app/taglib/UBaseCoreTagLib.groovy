@@ -64,7 +64,7 @@ class UBaseCoreTagLib {
     out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.styleResource(file: "layout.css")}\"/>"
     out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.styleResource(file: "forms.css")}\"/>"
     out << "<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"${ub.styleResource(file: "favicon.ico")}\"/>"
-    out << nav.resources()
+    out << nav.resources(override:true)
   }
 
   /**

@@ -13,7 +13,7 @@ security {
   enabled  = "enabled"
 
   loginFormUrl="/"
-  defaultTargetUrl="/dashboard"
+  defaultTargetUrl="/start"
   /*
   requestMapString = '''
     CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
