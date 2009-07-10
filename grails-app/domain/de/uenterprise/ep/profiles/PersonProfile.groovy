@@ -14,13 +14,19 @@ public class PersonProfile extends GenericProfile
   int  gender
   Date birthday
 
+  String status
+  String location
   String profession
   String hobbies
+  String webSite
 
   static constraints = {
+    status (nullable:true)
+    location (nullable:true)
     profession (nullable:true)
     hobbies (nullable:true)
     birthday (nullable:true)
+    webSite (nullable:true)
   }
 
 }

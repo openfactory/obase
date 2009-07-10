@@ -1,4 +1,9 @@
+import de.uenterprise.ep.Entity
+import de.uenterprise.ep.Account
+
 class UBaseCoreTagLib {
+  def entityHelperService
+
   static namespace = "ub"
 
 
@@ -76,6 +81,22 @@ class UBaseCoreTagLib {
 
   def layout = {attrs->
     out << "<meta name=\"layout\" content=\"${layoutName()}\" />"
+  }
+
+  def entityName = {attrs->
+    Entity entity
+    if (attrs.email)
+      entity = Entity.findByUser (new Account(email:attrs.email))
+
+    entity = entity ?:  entityHelperService.loggedIn
+    if (!entity)
+      out << "not logged in"
+    else {
+      entity.refresh() // re-attach to hibernate session
+      out << "$entity.name ($entity.profile.fullName)"
+
+    }
+
   }
 
 }

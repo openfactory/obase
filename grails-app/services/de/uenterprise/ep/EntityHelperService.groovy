@@ -53,7 +53,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
   }
 
   /**
-   * creates an entity with account and matching profile accoring to supertype
+   * creates an entity with account and matching profile according to supertype
    */
   Entity createEntityWithUserAndProfile (String name, EntityType type, String emailAddr, String fullName, Closure c=null) {
     createEntityWithUser (name, type, emailAddr) {Entity ent->
@@ -74,7 +74,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
   Entity getLoggedIn () {
     def account = authenticateService.userDomain() ;
     if (!account)
-      throw new EntityException ("no account is currently logged in.")
+      return null
 
     account = Account.get (account.id)
     return (account.entity)
