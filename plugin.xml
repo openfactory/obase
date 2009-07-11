@@ -9,6 +9,7 @@
     <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>SecurityConfig</resource>
+    <resource>spring.resources</resource>
     <resource>UrlMappings</resource>
     <resource>de.uenterprise.ep.AdminController</resource>
     <resource>de.uenterprise.ep.AssetController</resource>
@@ -18,6 +19,8 @@
     <resource>LoginController</resource>
     <resource>LogoutController</resource>
     <resource>de.uenterprise.ep.Account</resource>
+    <resource>de.uenterprise.ep.Asset</resource>
+    <resource>de.uenterprise.ep.AssetStorage</resource>
     <resource>de.uenterprise.ep.Entity</resource>
     <resource>de.uenterprise.ep.EntitySuperType</resource>
     <resource>de.uenterprise.ep.EntityTagLink</resource>
@@ -33,6 +36,7 @@
     <resource>de.uenterprise.ep.Role</resource>
     <resource>de.uenterprise.ep.Tag</resource>
     <resource>de.uenterprise.ep.TagLinkType</resource>
+    <resource>de.uenterprise.ep.AssetService</resource>
     <resource>de.uenterprise.ep.DefaultObjectService</resource>
     <resource>de.uenterprise.ep.EntityHelperService</resource>
     <resource>de.uenterprise.ep.ProfileHelperService</resource>

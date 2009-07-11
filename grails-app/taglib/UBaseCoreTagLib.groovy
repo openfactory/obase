@@ -62,7 +62,7 @@ class UBaseCoreTagLib {
     * renders all needed (style)Resources
     */
   def resources = {attrs->
-    out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.resource(dir:'css', file: 'yui-reset-fonts-grids.css')}\"/>"
+    out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${resource(dir:'css/', file:'yui-reset-fonts-grids.css')}\"/>"
     if (attrs.grailscss == 'true')
       out << "<link rel=\"stylesheet\" type=\"text/css\" href=\"${ub.styleResource(file: "grails.css")}\"/>"
 

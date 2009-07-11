@@ -7,7 +7,7 @@ package de.uenterprise.ep
  */
 
 public class Entity {
-  static hasMany = [tagslinks : EntityTagLink]
+  static hasMany = [tagslinks:EntityTagLink, assets:Asset]
 
   EntityType type ;
 

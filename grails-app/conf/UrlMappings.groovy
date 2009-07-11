@@ -1,6 +1,10 @@
 class UrlMappings {
     static mappings = {
 
+      "/a/$action?/$id?" {
+        controller = "asset"
+      }
+
 
       "/start/$id?" {
         controller = "dashboard"

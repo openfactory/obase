@@ -26,7 +26,7 @@ environments {
     dataSource {
       dbCreate = "create-drop" // one of 'create', 'create-drop','update'
       url = "jdbc:postgresql://localhost:5432/ue-dev"
-      loggingSql = true
+//      loggingSql = true
       hibernate.default_schema = 'ubasedev'
       username = "postgres"
       password = "postgres"
