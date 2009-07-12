@@ -9,9 +9,65 @@ class AssetService {
     boolean transactional = true
     IByteStore assetStore
 
-    def storeAsset(Entity ent, String type, MultipartFile mfile) {
-      storeAsset(ent, type, mfile.contentType, mfile.getBytes())
+    AssetStorage findStorage (String sid) {
+      AssetStorage.findByStorageId (sid)
     }
+
+
+   /**
+   * finds storage based on entity, type and optional selector
+    */
+    AssetStorage findStorage (Entity ent, String type, String selector='latest') {
+      def assets = Asset.createCriteria().list {
+        and {
+          eq ('entity', ent)
+          eq ('type', type)
+        }
+      }
+
+      if (!assets)
+        return null
+
+      if (assets.size() == 1)
+        return assets[0].storage
+
+      if (selector == 'latest')
+        return assets [-1].storage
+      else
+        return assets[0].storage
+    }
+
+    def withContent (AssetStorage store, Closure c) {
+      if (!store)
+        return (false)
+
+      byte[] content = assetStore.get(store.storageId)
+      if (!content)
+        throw new AssetException(message:"no physical asset stored under $sid")
+
+      return c.call(content, store.contentType)
+    }
+
+
+    void renderStorage (AssetStorage store, def response) {
+      if (!store) {
+        response.sendError (404, "no such asset")
+        return
+      }
+
+      try {
+        withContent(store) {content, contentType->
+          log.debug ("render asset $store.storageId ($store.contentType) to response")
+          response.contentType = contentType
+          response.outputStream << content
+          response.outputStream.flush ()
+        }
+      }
+      catch (RuntimeException e) {
+        response.sendError (500, e.message)
+      }
+    }
+
 
 
 
@@ -24,7 +80,7 @@ class AssetService {
       def sid = HashTools.SHA(content)
 
       // see if we have it already stored somehow ...
-      def store = AssetStorage.findByStorageId (sid)
+      def store = findStorage(sid)
       if (!store) {
         store = new AssetStorage (storageId:sid, contentType:contentType)
         assetStore.put (sid, content)
@@ -44,16 +100,31 @@ class AssetService {
       if (!asset) {
         asset = new Asset(entity:ent, storage:store, type:type)
         if (!asset.save()) {
-          current.errors.allErrors.each {
-            log.error ("create asset $name: field: '$it.field' code: $it.code, rejectedValue: $it.rejectedValue")
+          asset.errors.allErrors.each {
+            log.error ("create asset $asset: field: '$it.field' code: $it.code, rejectedValue: $it.rejectedValue")
           }
           return null
         }
       }
 
-      log.debug ("asset for $ent.name of type $type is stored as $sid") 
+      log.debug ("asset for $ent.name of type $type is stored as $sid")
       return asset
 
     }
 
+
+   /**
+   * convinient shortcut to be used by controller
+    */
+    def storeAsset(Entity ent, String type, MultipartFile mfile) {
+      storeAsset(ent, type, mfile.contentType, mfile.getBytes())
+    }
+
+
+
+}
+
+class AssetException extends RuntimeException {
+  String message
+  Asset asset
 }

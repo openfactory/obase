@@ -27,6 +27,13 @@ class DefaultObjectService {
     }
 
   def makeUserEntities() {
+    // create security roles (needed for user creation)
+    new Role(authority:"ROLE_USER", description:"regular user").save()
+    new Role(authority:"ROLE_VIP", description:"user with some extra privileges").save()
+    new Role(authority:"ROLE_ADMIN", description:"system administrator").save()
+    sessionFactory.currentSession.flush()
+
+
     // create some entities, types and supertypes
     log.debug ("start creating entity metadata structure")
     EntitySuperType estPerson = new EntitySuperType(name:"Person", profileType:'Person')
@@ -43,13 +50,10 @@ class DefaultObjectService {
       }
       throw new IllegalArgumentException("failed to bootstrap entity structure metadata")
     }
+    sessionFactory.currentSession.flush()
     log.debug ("entity structure created successfully")
 
 
-    // create security roles (needed for user creation)
-    new Role(authority:"ROLE_USER", description:"regular user").save()
-    new Role(authority:"ROLE_VIP", description:"user with some extra privileges").save()
-    new Role(authority:"ROLE_ADMIN", description:"system administrator").save()
 
     // create some actual entities
     entityHelperService.createEntityWithUserAndProfile ("franz", etKrocher, "franz@bbb.com", "Franz Franz and the Melody Boys") {Entity it->
