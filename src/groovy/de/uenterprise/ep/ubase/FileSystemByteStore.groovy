@@ -7,14 +7,18 @@
 package de.uenterprise.ep.ubase
 
 import de.uenterprise.ep.ubase.IByteStore
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-class FileSystemByteStore implements IByteStore{
-  File storeRoot = new File ("c:/temp/astore") ;
+class FileSystemByteStore implements IByteStore {
+  Logger log = LoggerFactory.getLogger(getClass())
+  File storeRoot
 
   def void put(String id, byte[] content) {
     storeRoot.mkdirs()
     def afile = new File (storeRoot, id)
     afile.withOutputStream {os-> os << content}
+    log.debug "artefact stored at '$afile"
   }
 
   def byte[] get(String id) {

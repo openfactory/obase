@@ -33,7 +33,12 @@ grails.converters.encoding="UTF-8"
 grails.enable.native2ascii = true
 
 
+// ubase specific stuff
 de.uenterprise.ep.defaultStyle='grailsdefault'
+de.uenterprise.ep.assetStore = "${userHome}/.${appName}/assets"
+beans {
+  assetStore.storeRoot="${de.uenterprise.ep.assetStore}"
+}
 
 
 // set per-environment serverURL stem for creating absolute links
@@ -72,13 +77,17 @@ log4j = {
 
     warn   'org.mortbay.log'
 
+    info   'org.springframework.security'
     info   'grails.app'
+
     debug  'grails.app.bootstrap'
     debug  'grails.app.controller'
     debug  'grails.app.dataSource'
     debug  'grails.app.service'
 
-    info   'org.springframework.security'
+    debug 'de.uenterprise.ep.ubase'
+
+
 
 }
 

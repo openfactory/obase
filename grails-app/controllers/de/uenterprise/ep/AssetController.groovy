@@ -90,7 +90,7 @@ class AssetController {
         return
       }
     }
-    ent = entity ?: entityHelperService.loggedIn;
+    ent = ent ?: entityHelperService.loggedIn;
 
 
     MultipartFile asset = request.getFile ('asset')

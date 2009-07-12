@@ -40,7 +40,9 @@
     <resource>de.uenterprise.ep.DefaultObjectService</resource>
     <resource>de.uenterprise.ep.EntityHelperService</resource>
     <resource>de.uenterprise.ep.ProfileHelperService</resource>
+    <resource>de.uenterprise.ep.SecHelperService</resource>
     <resource>UBaseCoreTagLib</resource>
+    <resource>UBaseSecTagLib</resource>
   </resources>
   <dependencies>
     <plugin name='navigation' version='1.1 &gt; *' />
