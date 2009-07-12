@@ -29,7 +29,13 @@ class AssetController {
 
     AssetStorage store = assetService.findStorage(ent, params.type, params.select ?: 'latest' )
     if (!store) {
-      response.sendError(404, 'no matching asset')
+//      response.sendError(404, 'no matching asset')
+        def res = grailsApplication.mainContext.getResource ("${pluginContextPath}/images/default_asset.jpg")
+        if (res) {
+          response.contentType = "image/jpg"
+          response.outputStream << res.inputStream
+          response.outputStream.flush ()
+        }
       return
     }
 

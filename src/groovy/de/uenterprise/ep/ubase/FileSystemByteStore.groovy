@@ -15,6 +15,7 @@ class FileSystemByteStore implements IByteStore {
   File storeRoot
 
   def void put(String id, byte[] content) {
+    assert storeRoot 
     storeRoot.mkdirs()
     def afile = new File (storeRoot, id)
     afile.withOutputStream {os-> os << content}

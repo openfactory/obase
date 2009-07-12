@@ -1,3 +1,5 @@
+import org.codehaus.groovy.grails.commons.GrailsApplication
+
 class UbaseGrailsPlugin {
     def version = "0.1.1"
     def grailsVersion = "1.1.1 > *"
@@ -18,7 +20,15 @@ class UbaseGrailsPlugin {
     def documentation = "http://dev.uenterprise.de/ep/grails/plugins/ubase"
 
     def doWithSpring = {
-        // TODO Implement runtime spring config (optional)
+      def storeDir = ((GrailsApplication)application).config.de.uenterprise.ep.assetStore
+      storeDir = storeDir ?: "${System.properties.'user.home'}/.${application.metadata.'app.name'}/assets"
+      println ("STORE-ROOT: $storeDir")
+      log.info ("installing FileSystemByteStore as default assetStore with storeRoot: $storeDir")
+
+      assetStore (de.uenterprise.ep.ubase.FileSystemByteStore) {bean->
+        storeRoot = storeDir
+      }
+
     }
 
     def doWithApplicationContext = { applicationContext ->

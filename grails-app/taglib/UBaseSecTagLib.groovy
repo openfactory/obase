@@ -5,7 +5,12 @@ class UBaseSecTagLib {
   static namespace = "ub"
 
   def meOrAdmin = {attrs, body->
-    if (secHelperService.isMeOrAdmin(attrs.entity))
+    if (secHelperService.isMeOrAdmin(attrs.entityName))
+      out << body()
+  }
+
+  def notMe = {attrs, body->
+    if (entityHelperService.loggedIn?.name != attrs.entityName)
       out << body()
   }
 

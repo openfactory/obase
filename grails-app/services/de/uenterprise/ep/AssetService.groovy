@@ -23,6 +23,7 @@ class AssetService {
           eq ('entity', ent)
           eq ('type', type)
         }
+        order("lastUpdated", "desc")
       }
 
       if (!assets)
@@ -32,9 +33,9 @@ class AssetService {
         return assets[0].storage
 
       if (selector == 'latest')
-        return assets [-1].storage
+        return assets [0].storage
       else
-        return assets[0].storage
+        return assets[-1].storage
     }
 
     def withContent (AssetStorage store, Closure c) {
@@ -105,7 +106,12 @@ class AssetService {
           }
           return null
         }
+      } else {
+        // update the timestamp so it comes out first with selection 'latest' and such
+        asset.lastUpdated = new Date()
+        asset.save()
       }
+
 
       log.debug ("asset for $ent.name of type $type is stored as $sid")
       return asset

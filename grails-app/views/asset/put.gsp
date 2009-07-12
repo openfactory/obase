@@ -8,10 +8,13 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-  <head><title>Asset Upload complete</title></head>
+  <head>
+    <title>Asset Upload complete</title>
+    <ub:layout/>
+  </head>
   <body>
     <p>
-      your asset '${asset}' has been uploaded successfully !
+      your asset has been uploaded successfully !
     </p>
   </body>
 </html>
