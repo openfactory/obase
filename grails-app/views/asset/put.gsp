@@ -14,7 +14,12 @@
   </head>
   <body>
     <p>
-      your asset has been uploaded successfully !
+      <g:if test="${asset}">
+        your asset of type '${asset.type}' has been uploaded successfully !
+      </g:if>
+      <g:else>
+        your asset could not be uploaded
+      </g:else>
     </p>
   </body>
 </html>

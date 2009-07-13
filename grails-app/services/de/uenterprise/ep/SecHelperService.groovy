@@ -2,6 +2,7 @@ package de.uenterprise.ep
 
 class SecHelperService {
     def entityHelperService
+    def authenticateService 
 
     boolean transactional = false
 
@@ -32,6 +33,10 @@ class SecHelperService {
 
     boolean isAdmin () {
       authenticateService.ifAllGranted('ROLE_ADMIN')
+    }
+
+    boolean isLoggedIn () {
+      authenticateService.isLoggedIn()
     }
 
 }

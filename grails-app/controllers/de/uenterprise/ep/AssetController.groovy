@@ -76,7 +76,6 @@ class AssetController {
    * from the form or (prefered) define your own action in your controller and forward to here (see 'putprf' below)
    */
   def put = {
-    log.debug ("request forward URL: $request.forwardURI")
     if (!entityHelperService.loggedIn) {
       flash.message = "for upload your need to be logged in"
       redirect (controller:'login', action:'denied')
@@ -105,7 +104,7 @@ class AssetController {
       log.debug ("type: $params.type")
 
       def result = assetService.storeAsset(ent, params.type, asset)
-      if (!result)
+      if (!result) 
         flash.message = 'uploading the asset went bad somehow'
 
       [asset:result]
