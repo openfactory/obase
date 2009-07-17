@@ -5,17 +5,27 @@ package de.uenterprise.ep
  * initializes and caches often used parameter objects
  */
 class DefaultObjectService {
+    // names for default object
+    String EST_PERSON = "Person"
+    String ET_USER = "User"
+
     def   sessionFactory
     def   entityHelperService
     def   defaultObjectService
 
     boolean transactional = false
 
+
+   /**
+   * bootstraps a complete initial database scebario including users, profiles, etc
+    */
     def bootstrapData() {
       onEmptyDatabase {
+        makeMetaData()
         makeUserEntities()
       }
     }
+
 
     def onEmptyDatabase (Closure c) {
       if (!EpSystem.count()) {
@@ -26,23 +36,35 @@ class DefaultObjectService {
       }
     }
 
-  def makeUserEntities() {
+  def makeMetaData() {
     // create security roles (needed for user creation)
     new Role(authority:"ROLE_USER", description:"regular user").save()
     new Role(authority:"ROLE_VIP", description:"user with some extra privileges").save()
     new Role(authority:"ROLE_ADMIN", description:"system administrator").save()
     sessionFactory.currentSession.flush()
 
+    log.debug ("start creating '$EST_PERSON' entity supertype")
+    EntitySuperType estPerson = new EntitySuperType(name:"$EST_PERSON", profileType:'Person')
 
+    log.debug ("start creating '$ET_USER' entity type")
+    estPerson.addToEntityTypes (new EntityType (name:"User"))
+
+    estPerson.save()
+
+    sessionFactory.currentSession.flush()
+  }
+
+  def makeUserEntities() {
     // create some entities, types and supertypes
-    log.debug ("start creating entity metadata structure")
-    EntitySuperType estPerson = new EntitySuperType(name:"Person", profileType:'Person')
-      EntityType etKrocher = new EntityType (name:"Krocher")
-      estPerson.addToEntityTypes (etKrocher)
-      EntityType etRocker = new EntityType (name:"Rocker")
-      estPerson.addToEntityTypes (etRocker)
-      EntityType etEmo = new EntityType (name:"Emo")
-      estPerson.addToEntityTypes (etEmo)
+    EntitySuperType estPerson = EntitySuperType.findByName (EST_PERSON)
+
+    log.debug ("start creating entity types")
+    EntityType etKrocher = new EntityType (name:"Krocher")
+    estPerson.addToEntityTypes (etKrocher)
+    EntityType etRocker = new EntityType (name:"Rocker")
+    estPerson.addToEntityTypes (etRocker)
+    EntityType etEmo = new EntityType (name:"Emo")
+    estPerson.addToEntityTypes (etEmo)
 
     if (!estPerson.save()) {
       estPerson.errors.each {
