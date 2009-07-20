@@ -92,9 +92,9 @@ class UBaseCoreTagLib {
     if (!entity)
       out << "not logged in"
     else {
-      entity.refresh() // re-attach to hibernate session
+      entity.refresh()
+      entity.profile.refresh()
       out << "$entity.name ($entity.profile.fullName)"
-
     }
 
   }
