@@ -19,5 +19,7 @@ public class GenericProfile extends Profile
     profilePic (nullable:true)
   }
 
-
+  static mapping = {
+    description type:'text'
+  }
 }

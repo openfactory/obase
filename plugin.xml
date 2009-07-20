@@ -1,4 +1,4 @@
-<plugin name='ubase' version='0.1.1' grailsVersion='1.1.1 &gt; *'>
+<plugin name='ubase' version='0.2.0' grailsVersion='1.1.1 &gt; *'>
   <author>Mike P. Kuhl</author>
   <authorEmail>mk@uenterprise.de</authorEmail>
   <title>ue/ep ubase plugin</title>

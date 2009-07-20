@@ -22,7 +22,7 @@ public class Entity {
     name(size:3..20)
     user(nullable: true)
     profile (nullable:true)
-}
+  }
 
 
   String toString() {"Entity:$name"}
