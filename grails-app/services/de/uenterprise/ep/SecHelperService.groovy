@@ -2,7 +2,7 @@ package de.uenterprise.ep
 
 class SecHelperService {
     def entityHelperService
-    def authenticateService 
+    def authenticateService
 
     boolean transactional = false
 
@@ -18,10 +18,14 @@ class SecHelperService {
       if (!e)
         return false
 
-      if (entityHelperService.loggedIn.name == e.name)
+      Entity el = entityHelperService.loggedIn ;
+      if (!el)
+        return false
+
+      if (el.name == e.name)
         return true
 
-      return isAdmin()
+      return   isAdmin()
     }
 
     boolean isNotMe (Entity e) {
