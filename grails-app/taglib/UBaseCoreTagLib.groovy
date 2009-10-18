@@ -15,9 +15,9 @@ class UBaseCoreTagLib {
       def path = "$attrs.dir/$attrs.file"
       def url
       if (grailsApplication.mainContext.getResource(path).exists())
-        url = g.resource (dir:"$attrs.dir", attrs.file)
+        url = g.resource (dir:"$attrs.dir", file:attrs.file)
       else
-        url = g.resource (dir:"$pluginContextPath/$attrs.dir/", attrs.file)
+        url = g.resource (dir:"$pluginContextPath/$attrs.dir/", file:attrs.file)
 
       log.debug "loading ubase resource '$path' from $url"
 
@@ -41,7 +41,7 @@ class UBaseCoreTagLib {
 
 
   /**
-   * returns a web resource relative to the current style directoty
+   * returns a web resource relative to the current style directory
    */
   def styleResource = {attrs->
     def path = "styles/${styleName()}"
