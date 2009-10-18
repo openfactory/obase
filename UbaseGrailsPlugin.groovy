@@ -1,7 +1,7 @@
 import org.codehaus.groovy.grails.commons.GrailsApplication
 
 class UbaseGrailsPlugin {
-    def version = "0.2.0"
+    def version = "snapshot"
     def grailsVersion = "1.1.1 > *"
     def dependsOn = [navigation:'1.1 > *', jquery:'1.3.2.4 > *', acegi:'0.5.1 > *']
 
