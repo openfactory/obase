@@ -2,39 +2,109 @@ package de.uenterprise.ep
 
 
 /**
- * initializes and caches often used parameter objects
+ * Helpers to bootstrap the parametrisation and to populate the database with some default data.
  */
 class DefaultObjectService {
-    // names for default object
-    String EST_PERSON = "Person"
-    String ET_USER = "User"
+  // names for default object
+  String EST_PERSON = "Person"
+  String ET_USER = "User"
 
-    def   sessionFactory
-    def   entityHelperService
-    def   defaultObjectService
+  def   sessionFactory
+  def   entityHelperService
+  def   defaultObjectService
 
-    boolean transactional = false
+  boolean transactional = false
 
 
-   /**
-   * bootstraps a complete initial database scebario including users, profiles, etc
-    */
-    def bootstrapData() {
-      onEmptyDatabase {
-        makeMetaData()
-        makeUserEntities()
+  /**
+  * bootstraps a complete initial database scenario including users, profiles, etc
+  */
+  def bootstrapData() {
+    onEmptyDatabase {
+      makeMetaData()
+      makeUserEntities()
+    }
+  }
+
+
+  def onEmptyDatabase (Closure c) {
+    if (!EpSystem.count()) {
+      log.warn ("emtpy database. will install demo data set")
+      new EpSystem(sysKey:"SCHEMA_VERSION", sysVal:"0").save()
+      if (c) c.call()
+      sessionFactory.currentSession.flush()
+    }
+  }
+
+  def openEST (String name, String profileType) {
+    EntitySuperType est = EntitySuperType.findByName (name)
+    if (!est) {
+      est = new EntitySuperType(name:name, profileType:profileType)
+      if (!est.save()) {
+        est.errors.each {log.error ("bootstrap validation error: $it")}
+        throw new IllegalArgumentException("failed to bootstrap '$name' EntitySuperType")
       }
     }
 
+    return (est)
+  }
 
-    def onEmptyDatabase (Closure c) {
-      if (!EpSystem.count()) {
-        log.warn ("emtpy database. will install demo data set")
-        new EpSystem(sysKey:"SCHEMA_VERSION", sysVal:"0").save()
-        if (c) c.call()
-        sessionFactory.currentSession.flush()
+  def openET (String name, EntitySuperType est) {
+    EntityType et = EntityType.findByName (name)
+    if (!et) {
+      et = new EntityType(name:name)
+      est.addToEntityTypes (et)
+      // need to save the owning side of the cascade
+      if (!est.save()) {
+        est.errors.each {log.error ("bootstrap validation error: $it")}
+        throw new IllegalArgumentException("failed to bootstrap '$name' EntityType")
       }
     }
+
+    return (et)
+  }
+
+  def openLST (String name, String desc) {
+    LinkSuperType lst = LinkSuperType.findByName (name)
+    if (!lst) {
+      lst = new LinkSuperType(name:name, description:desc)
+      if (!lst.save()) {
+        lst.errors.each {log.error ("bootstrap validation error: $it")}
+        throw new IllegalArgumentException("failed to bootstrap '$name' ($desc) EntityType")
+      }
+    }
+
+    return (lst)
+  }
+
+  def openLT (String name, LinkSuperType lst) {
+    LinkType lt = LinkType.findByName (name)
+    if (!lt) {
+      lt = new LinkType(name:name)
+      lst.addToTypes (lt)
+      // need to save the owning side of the cascade
+      if (!lst.save()) {
+        lst.errors.each {log.error ("bootstrap validation error: $it")}
+        throw new IllegalArgumentException("failed to bootstrap 'User' EntityType")
+      }
+    }
+
+    return (lt)
+  }
+
+  def openRole (String auth, String desc) {
+    Role role = Role.findByAuthority(auth)
+    if (!role) {
+      role = new Role(authority:auth, description:desc)
+      if (!role.save()) {
+        role.errors.each {log.error ("bootstrap validation error: $it")}
+        throw new IllegalArgumentException("failed to bootstrap '$name' Security Role")
+      }
+    }
+
+    return role
+  }
+
 
   def makeMetaData() {
     // create security roles (needed for user creation)
