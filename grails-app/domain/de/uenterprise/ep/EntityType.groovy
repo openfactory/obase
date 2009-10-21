@@ -13,7 +13,7 @@ public class EntityType {
   String name
 
   static constraints = {
-    name (emtpy:false)
+    name (blank:false)
   }
 
   String toString () {"EntityType:$name" }
