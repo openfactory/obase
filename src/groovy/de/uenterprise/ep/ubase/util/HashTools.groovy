@@ -11,6 +11,8 @@ import java.security.NoSuchAlgorithmException
 
 final class HashTools {
 
+  public static String SHA(String s) { SHA(s.getBytes()) ; }
+
   public static String SHA(byte[] bytes) {
     MessageDigest md = MessageDigest.getInstance("SHA");
     md.update(bytes, 0, bytes.length);
