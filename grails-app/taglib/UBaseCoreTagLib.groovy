@@ -99,4 +99,13 @@ class UBaseCoreTagLib {
 
   }
 
+  def ifGrailsEnv = {attrs, body->
+    def env = grails.util.GrailsUtil.environment
+
+    if (attrs.env && attrs.env instanceof List && attrs.env.contains (env))
+      out << body()
+    else if (attrs.env == env)
+      out << body() 
+  }
+
 }
