@@ -19,6 +19,8 @@ public class Account {
 
   static constraints = {
     email (email:true, nullable:false, blank:false, unique:true)
+    lastLogin (nullable:true)
+    prevLogin (nullable:true)
   }
 
 }
