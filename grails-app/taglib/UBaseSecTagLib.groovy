@@ -18,4 +18,10 @@ class UBaseSecTagLib {
     if (secHelperService.isAdmin())
       out << body()
   }
+
+  def notAdmin = {attrs, body->
+    if (!secHelperService.isAdmin())
+      out << body()
+  }
+
 }
