@@ -14,6 +14,8 @@ public class Account {
   String email
   String password
   boolean enabled
+  Date    lastLogin
+  Date    prevLogin 
 
   static constraints = {
     email (email:true, nullable:false, blank:false, unique:true)
