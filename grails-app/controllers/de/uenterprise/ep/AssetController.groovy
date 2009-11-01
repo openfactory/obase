@@ -17,7 +17,7 @@ class AssetController {
 
    /**
     * renders  a single (binary) asset based on 'entity', 'type' and 'content-type' parameters. if there's more than one for this type, the select param
-    * determines which one is taken. Currently only <latest> is supported, but there will be propably
+    * determines which one is taken. Currently only <latest> is supported, but there will be probably
     * thinks like <random>, etc in the future
     */
   def get = {
@@ -72,8 +72,8 @@ class AssetController {
   /**
    * generic target for multipart uploads via forms. either pass in 'type' via a hidden field
    * 'asset' is the name if the input file tag, type determines the type of the asset which is specific to your application
-   * some aggreed on types are 'profile' for profile images and 'album' for a simple user photo album
-   * from the form or (prefered) define your own action in your controller and forward to here (see 'putprf' below)
+   * some agreed on types are 'profile' for profile images and 'album' for a simple user photo album
+   * from the form or (preferred) define your own action in your controller and forward to here (see 'putprf' below)
    */
   def put = {
     if (!entityHelperService.loggedIn) {

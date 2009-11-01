@@ -73,7 +73,7 @@ class AssetService {
 
 
    /**
-    * creates and if nessesarry stores an asset from the given data.
+    * creates and if necessary stores an asset from the given data.
     * The corresponding storage is identified by a SHA hash (of the content) and re-used if already
     * exists. This will avoid duplicate storage and has other interesting usages
     */
@@ -115,12 +115,11 @@ class AssetService {
 
       log.debug ("asset for $ent.name of type $type is stored as $sid")
       return asset
-
     }
 
 
    /**
-   * convinient shortcut to be used by controller
+   * convenient shortcut to be used by controller
     */
     def storeAsset(Entity ent, String type, MultipartFile mfile) {
       storeAsset(ent, type, mfile.contentType, mfile.getBytes())
