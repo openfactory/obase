@@ -1,4 +1,5 @@
 package de.uenterprise.ep
+
 /**
  * User: mkuhl
  * Date: 25.05.2009
@@ -7,10 +8,10 @@ package de.uenterprise.ep
  */
 
 public class Link {
+  Date dateCreated ;
+  
   LinkType type 
   Entity source
   Entity target
-
-
 
 }
