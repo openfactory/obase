@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <g:uploadForm action="putprf">
+  <g:uploadForm action="putprf" params="[entity:params.entity]">
     <div class="dialog">
       <fieldset>
         <legend>Asset Upload</legend>
