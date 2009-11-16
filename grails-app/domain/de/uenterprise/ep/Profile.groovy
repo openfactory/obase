@@ -13,7 +13,7 @@ public class Profile {
 
   static constraints = {
     tagline(nullable:true)
-    fullName(size:5..35)
+    fullName(size:5..80)
   }
 
 
