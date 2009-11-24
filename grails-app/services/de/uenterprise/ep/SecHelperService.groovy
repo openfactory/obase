@@ -28,6 +28,26 @@ class SecHelperService {
       return   isAdmin()
     }
 
+    boolean hasAllRoles (Entity e, List roles) {
+      if (!e)
+        return false
+
+//      if (e.user?.authorities?.find { roles.contains(it.authority) })
+//        return true
+
+      def matching = roles.findAll { e.user?.authorities*.authority.contains(it) }
+      return matching.size() == roles.size()
+    }
+
+    boolean hasNoRoles (Entity e, List roles) {
+      if (!e)
+        return true
+
+      def res = !roles.find { e.user?.authorities*.authority.contains (it) }
+      return res
+    }
+
+
     boolean isNotMe (Entity e) {
       if (!e)
         return true

@@ -14,6 +14,16 @@ class UBaseSecTagLib {
       out << body()
   }
 
+  def hasAllRoles = {attrs, body->
+    if (secHelperService.hasAllRoles (attrs.entity, attrs.roles))
+      out << body() ;
+  }
+
+  def hasNoRoles = {attrs, body->
+    if (secHelperService.hasNoRoles (attrs.entity, attrs.roles))
+      out << body() ;
+  }
+
   def isAdmin = {attrs, body->
     if (secHelperService.isAdmin())
       out << body()
