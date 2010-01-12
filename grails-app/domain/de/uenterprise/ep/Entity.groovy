@@ -19,7 +19,7 @@ public class Entity {
   Profile profile ;
 
   static constraints = {
-    name(size:3..20)
+    name(size:3..50)
     user(nullable: true)
     profile (nullable:true)
   }
