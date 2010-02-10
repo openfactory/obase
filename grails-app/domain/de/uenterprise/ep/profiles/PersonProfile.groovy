@@ -11,6 +11,11 @@ import de.uenterprise.ep.Profile
 
 public class PersonProfile extends GenericProfile
 {
+  static final int GENDER_MALE = 1
+  static final int GENDER_FEMALE = 2
+  static final int GENDER_FAMILY = 3
+  static final int GENDER_COMPANY = 4
+
   int  gender
   Date birthday
 
