@@ -71,12 +71,20 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
   /**
    * get Entity for currently logged in user account (if any)
    */
-  Entity getLoggedIn () {
+  Entity getLoggedIn (boolean authZByRoleUser = true) {
     def account = authenticateService.userDomain() ;
     if (!account)
       return null
 
     account = Account.get (account.id)
+    if(authZByRoleUser) {
+      for(Role role:account.getAuthorities()) {
+        if(role.authority == "ROLE_USER") {
+          return (account.entity)
+        }
+      }
+      return null;
+    }
     return (account.entity)
   }
 }

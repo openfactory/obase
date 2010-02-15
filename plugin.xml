@@ -8,7 +8,7 @@
     <resource>BootStrap</resource>
     <resource>Config</resource>
     <resource>DataSource</resource>
-    <resource>SecurityConfig</resource>
+    <!--<resource>SecurityConfig</resource>-->
     <resource>spring.resources</resource>
     <resource>UrlMappings</resource>
     <resource>de.uenterprise.ep.AdminController</resource>
