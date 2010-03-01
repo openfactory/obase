@@ -15,12 +15,14 @@ public class Account {
   String password
   boolean enabled
   Date    lastLogin
-  Date    prevLogin 
+  Date    prevLogin
+  Locale  locale ;
 
   static constraints = {
     email (email:true, nullable:false, blank:false, unique:true)
     lastLogin (nullable:true)
     prevLogin (nullable:true)
+    locale    (nullable:true)
   }
 
 }
