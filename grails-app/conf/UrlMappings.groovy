@@ -1,9 +1,9 @@
 class UrlMappings {
     static mappings = {
-
-      "/a/getstore/$id?" {
-        controller = "asset"
-        action = 'getstore'
+      "/$controller/$action?/$id?"{
+	      constraints {
+			 // apply constraints here
+          }
       }
 
       "/a/get/$entity/$type/$select?" {
