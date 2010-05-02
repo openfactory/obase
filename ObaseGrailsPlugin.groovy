@@ -2,8 +2,8 @@ import org.codehaus.groovy.grails.commons.GrailsApplication
 
 class ObaseGrailsPlugin {
     def version = "snapshot"
-    def grailsVersion = "1.1.1 > *"
-    def dependsOn = [navigation:'1.1 > *', jquery:'1.3.2.4 > *', acegi:'0.5.1 > *']
+    def grailsVersion = "1.2.2 > *"
+    def dependsOn = [:]
 
 
     def pluginExcludes = [

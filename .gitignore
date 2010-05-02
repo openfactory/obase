@@ -11,6 +11,7 @@ test/reports
 .project
 .settings/
 .idea/
+target/
 stacktrace.log
 web-app/plugins
 web-app/WEB-INF/tld/c.tld
