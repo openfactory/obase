@@ -10,12 +10,11 @@
 <html>
 <head>
   <title>ubase default plugin page</title>
-  <ub:layout/>
 </head>
 
   <body>
     <p>
-    <H3>we are using the using the following layout: <span style="color:red"><ub:layoutName /></span></H3>
+      there's nothing to see here ...
     </p>
   </body>
 

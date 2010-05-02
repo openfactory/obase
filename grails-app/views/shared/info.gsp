@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
     <head>
-      <title>u.enterprise / EP Info</title>
-		  <meta name="layout" content="${ub.layout()}" />
+      <title>openfactory / ubase Info</title>
       <g:javascript library="jquery"/>
 
       <style type="text/css">
@@ -15,7 +14,7 @@
           text-align:center;
           width:40%;
           margin:auto;
-          -moz-border-radius:10;
+          -moz-border-radius:10pt;
           /*text-align:center;*/
           /*margin-left:auto;*/
           /*margin-right:auto;*/
