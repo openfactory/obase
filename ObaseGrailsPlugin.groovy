@@ -11,9 +11,9 @@ class ObaseGrailsPlugin {
     ]
 
     def author = "Mike P. Kuhl"
-    def authorEmail = "mk@uenterprise.de"
-    def title = "ue/ep ubase plugin"
-    def description = 'base objects and functions needed by all ue/ep applications'
+    def authorEmail = "mkuhl@softmachine.at"
+    def title = "open factory base plugin"
+    def description = 'base objects and functions needed by all ep applications'
 
 
     // URL to the plugin's documentation
