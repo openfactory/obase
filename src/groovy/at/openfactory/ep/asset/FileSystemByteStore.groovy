@@ -4,7 +4,7 @@
  * Time: 14:17:33
  * Description:
  */
-package de.uenterprise.ep.ubase
+package at.openfactory.ep.asset
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

@@ -1,4 +1,5 @@
 import org.codehaus.groovy.grails.commons.GrailsApplication
+import at.openfactory.ep.asset.FileSystemByteStore
 
 class ObaseGrailsPlugin {
     def version = "snapshot"
@@ -25,7 +26,7 @@ class ObaseGrailsPlugin {
       println ("STORE-ROOT: $storeDir")
       log.info ("installing FileSystemByteStore as default assetStore with storeRoot: $storeDir")
 
-      assetStore (de.uenterprise.ep.ubase.FileSystemByteStore) {bean->
+      assetStore (FileSystemByteStore) {bean->
         storeRoot = storeDir
       }
 

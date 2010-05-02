@@ -5,7 +5,7 @@
  * Description: Interface for providers to store a (potentially large) bunch of binary data in whatever way
  * it sees fit (filesystem, blob, AmazonS3, ...)
  */
-package de.uenterprise.ep.ubase
+package at.openfactory.ep.asset
 
 interface IByteStore {
   /**

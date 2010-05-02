@@ -1,9 +1,8 @@
 package at.openfactory.ep
 
 import org.springframework.web.multipart.MultipartFile
-import de.uenterprise.ep.ubase.util.HashTools
-import de.uenterprise.ep.ubase.IByteStore
-
+import at.openfactory.ep.util.HashTools
+import at.openfactory.ep.asset.IByteStore
 
 class AssetService {
     boolean transactional = true

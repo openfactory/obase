@@ -1,5 +1,7 @@
+import at.openfactory.ep.asset.FileSystemByteStore
+
 beans = {
-  assetStore (de.uenterprise.ep.ubase.FileSystemByteStore) {bean->
+  assetStore (FileSystemByteStore) {bean->
     storeRoot = "c:/temp/ue-assets"
   }
 }

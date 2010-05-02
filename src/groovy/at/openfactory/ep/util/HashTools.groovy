@@ -4,7 +4,7 @@
  * Time: 15:59:27
  * Description:
  */
-package de.uenterprise.ep.ubase.util
+package at.openfactory.ep.util
 
 import java.security.MessageDigest
 
