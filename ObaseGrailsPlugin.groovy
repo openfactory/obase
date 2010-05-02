@@ -1,6 +1,6 @@
 import org.codehaus.groovy.grails.commons.GrailsApplication
 
-class UbaseGrailsPlugin {
+class ObaseGrailsPlugin {
     def version = "snapshot"
     def grailsVersion = "1.1.1 > *"
     def dependsOn = [navigation:'1.1 > *', jquery:'1.3.2.4 > *', acegi:'0.5.1 > *']
@@ -17,7 +17,7 @@ class UbaseGrailsPlugin {
 
 
     // URL to the plugin's documentation
-    def documentation = "http://dev.uenterprise.de/ep/grails/plugins/ubase"
+    def documentation = "http://www.openfactory.de/dev/docs/plugins/obase"
 
     def doWithSpring = {
       def storeDir = ((GrailsApplication)application).config.de.uenterprise.ep.assetStore
