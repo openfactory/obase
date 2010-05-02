@@ -1,4 +1,5 @@
-class UBaseSecTagLib {
+package at.openfactory.ep
+class OBaseSecTagLib {
   def entityHelperService
   def secHelperService
 

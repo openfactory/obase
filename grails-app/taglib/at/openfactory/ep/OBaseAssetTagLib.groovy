@@ -1,3 +1,4 @@
+package at.openfactory.ep
 
 /**
  * Creator: mkuhl
@@ -6,8 +7,8 @@
  *
  * asset related tags
  */
-class UBaseAssetTagLib {
-  static namespace = "ub"
+class OBaseAssetTagLib {
+  static namespace = "ob"
   
 
   def assetImage = {attrs->
@@ -22,7 +23,7 @@ class UBaseAssetTagLib {
   }
 
   def profileImage = {attrs->
-    out << ub.assetImage (attrs + [type:'profile'])  
+    out << ub.assetImage (attrs + [type:'profile'])
   }
 
 }

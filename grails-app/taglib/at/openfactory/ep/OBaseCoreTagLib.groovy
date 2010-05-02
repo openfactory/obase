@@ -1,12 +1,12 @@
+package at.openfactory.ep
+
 import at.openfactory.ep.Entity
 import at.openfactory.ep.Account
 
-class UBaseCoreTagLib {
+class OBaseCoreTagLib {
   def entityHelperService
 
   static namespace = "ub"
-
-
 
    /**
    * returns a url to a application resource if exists - plugin resource otherwise
