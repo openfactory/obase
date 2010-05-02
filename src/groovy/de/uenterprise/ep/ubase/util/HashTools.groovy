@@ -7,7 +7,6 @@
 package de.uenterprise.ep.ubase.util
 
 import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 final class HashTools {
 

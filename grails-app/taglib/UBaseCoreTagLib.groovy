@@ -1,5 +1,5 @@
-import de.uenterprise.ep.Entity
-import de.uenterprise.ep.Account
+import at.openfactory.ep.Entity
+import at.openfactory.ep.Account
 
 class UBaseCoreTagLib {
   def entityHelperService
