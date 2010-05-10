@@ -2,7 +2,7 @@ class BootStrap {
     def   defaultObjectService
 
     def init = { servletContext ->
-      defaultObjectService.bootstrapData()
+       defaultObjectService.bootstrapData()
     }
 
      def destroy = {

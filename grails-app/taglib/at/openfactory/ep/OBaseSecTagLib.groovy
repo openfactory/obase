@@ -2,8 +2,9 @@ package at.openfactory.ep
 class OBaseSecTagLib {
   def entityHelperService
   def secHelperService
+  def securityManager
 
-  static namespace = "ub"
+  static namespace = "ob"
 
   def meOrAdmin = {attrs, body->
     if (secHelperService.isMeOrAdmin(attrs.entityName))
@@ -26,13 +27,25 @@ class OBaseSecTagLib {
   }
 
   def isAdmin = {attrs, body->
-    if (secHelperService.isAdmin())
+    Entity e = getEntity (attrs) ;
+    if (!e)
+      e = securityManager.getLoggedIn(request)
+
+    if (secHelperService.isAdmin(e))
       out << body()
   }
 
   def notAdmin = {attrs, body->
     if (!secHelperService.isAdmin())
       out << body()
+  }
+
+
+  private Entity getEntity (def attrs) {
+    if (attrs.entity)
+      return attrs.entity
+    if (attrs.entityName)
+      return Entity.findByName (attrs.entityName)
   }
 
 }

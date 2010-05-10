@@ -8,7 +8,7 @@ package at.openfactory.ep
  */
 
 public class EntityHelperService {
-  def authenticateService
+  def securityManager 
   def profileHelperService
 
   static transactional = true
@@ -43,8 +43,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
       if (!role)
         throw new EntityException(message:"cannot create user account. ROLE_USER not found", entity:ent)
 
-
-      ent.user = new Account (email:emailAddr, password:authenticateService.encodePassword("pass"), enabled:true)
+      ent.user = new Account (email:emailAddr, password:securityManager.encodePassword("pass"), enabled:true)
       ent.user.addToAuthorities (role)
       if (c) c.call (ent)
     }
@@ -70,20 +69,21 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
    * get Entity for currently logged in user account (if any)
    */
   Entity getLoggedIn (boolean authZByRoleUser = true) {
-    def account = authenticateService.userDomain() ;
-    if (!account)
-      return null
+    def Entity e = securityManager.getCurrentEntity() ;
+    if (e)
+      e = Entity.get(e.id)
 
-    account = Account.get (account.id)
     if(authZByRoleUser) {
-      for(Role role:account.getAuthorities()) {
-        if(role.authority == "ROLE_USER") {
-          return (account.entity)
+      if (e?.user) {
+          for(Role role:e.user.authorities) {
+            if(role.authority == "ROLE_USER")
+              return (e)
         }
       }
       return null;
     }
-    return (account.entity)
+
+    return (e)
   }
 }
 

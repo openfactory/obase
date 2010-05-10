@@ -86,6 +86,7 @@ log4j = {
     debug  'grails.app.controller'
     debug  'grails.app.dataSource'
     debug  'grails.app.service'
+    debug  'grails.app.filters'
 
     debug 'de.uenterprise.ep.ubase'
 
@@ -93,7 +94,9 @@ log4j = {
 
 }
 
-
-
-
-//log4j.logger.org.springframework.security='off,stdout'
+secmgr {
+  starturl     = "/"
+  publicurl    = "/public"
+  loggedinurl  = "/welcome"
+  loggedouturl = "/by"
+}

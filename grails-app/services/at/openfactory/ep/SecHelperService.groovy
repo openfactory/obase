@@ -2,7 +2,6 @@ package at.openfactory.ep
 
 class SecHelperService {
     def entityHelperService
-    def authenticateService
 
     boolean transactional = false
 
@@ -55,12 +54,12 @@ class SecHelperService {
       return entityHelperService.loggedIn.name != e.name
     }
 
-    boolean isAdmin () {
-      authenticateService.ifAllGranted('ROLE_ADMIN')
-    }
-
-    boolean isLoggedIn () {
-      authenticateService.isLoggedIn()
+    boolean isAdmin (Entity e) {
+      if (!e)
+        return false
+      e = Entity.get(e.id) ;
+      Role adminRole = e.user?.authorities.find {it.authority == 'ROLE_ADMIN'} 
+      return (adminRole ? true : false)
     }
 
 }

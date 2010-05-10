@@ -9,6 +9,7 @@ package at.openfactory.ep
 public class Account {
   static belongsTo = [ entity : Entity]
   static hasMany = [authorities: Role]
+  static fetchMode = [authorities : 'eager']
 
 
   String email

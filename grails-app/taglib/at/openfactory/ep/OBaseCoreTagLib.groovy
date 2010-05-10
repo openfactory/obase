@@ -6,7 +6,7 @@ import at.openfactory.ep.Account
 class OBaseCoreTagLib {
   def entityHelperService
 
-  static namespace = "ub"
+  static namespace = "ob"
 
    /**
    * returns a url to a application resource if exists - plugin resource otherwise
