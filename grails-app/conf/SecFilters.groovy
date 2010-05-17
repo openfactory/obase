@@ -24,8 +24,10 @@ class SecFilters {
         after = {model->
           if (model)  {
             Entity e = securityManager.getLoggedIn(request) ;
-            if (e)
+            if (e) {
+              e = Entity.get(e.id)
               model['currentEntity'] = e
+            }
           }
         }
       }

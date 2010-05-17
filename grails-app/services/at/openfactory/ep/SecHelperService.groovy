@@ -27,7 +27,8 @@ class SecHelperService {
       return   isAdmin()
     }
 
-    boolean hasAllRoles (Entity e, List roles) {
+    boolean hasAllRoles (Entity e = null, List roles) {
+      e = e ?: entityHelperService.loggedIn ;
       if (!e)
         return false
 
@@ -38,7 +39,20 @@ class SecHelperService {
       return matching.size() == roles.size()
     }
 
-    boolean hasNoRoles (Entity e, List roles) {
+    boolean hasRole (Entity e = null, String name) {
+      e = e ?: entityHelperService.loggedIn ;
+
+      e?.user?.authorities.each {
+        if (it.authority == name)
+          return true
+      }
+
+      return false ;
+    }
+
+
+    boolean hasNoRoles (Entity e = null, List roles) {
+      e = e ?: entityHelperService.loggedIn ;
       if (!e)
         return true
 
@@ -54,9 +68,11 @@ class SecHelperService {
       return entityHelperService.loggedIn.name != e.name
     }
 
-    boolean isAdmin (Entity e) {
+    boolean isAdmin (Entity e = null) {
+      e = e ?: entityHelperService.loggedIn ;
       if (!e)
         return false
+
       e = Entity.get(e.id) ;
       Role adminRole = e.user?.authorities.find {it.authority == 'ROLE_ADMIN'} 
       return (adminRole ? true : false)

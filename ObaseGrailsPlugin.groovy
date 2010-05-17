@@ -1,5 +1,6 @@
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import at.openfactory.ep.asset.FileSystemByteStore
+import at.openfactory.ep.security.DefaultSecurityManager
 
 class ObaseGrailsPlugin {
     def version = "snapshot"
@@ -21,6 +22,7 @@ class ObaseGrailsPlugin {
     def documentation = "http://www.openfactory.de/dev/docs/plugins/obase"
 
     def doWithSpring = {
+      // initialize asset store
       def storeDir = ((GrailsApplication)application).config.de.uenterprise.ep.assetStore
       storeDir = storeDir ?: "${System.properties.'user.home'}/.${application.metadata.'app.name'}/assets"
       println ("STORE-ROOT: $storeDir")
@@ -29,6 +31,14 @@ class ObaseGrailsPlugin {
       assetStore (FileSystemByteStore) {bean->
         storeRoot = storeDir
       }
+
+      // initialize security Manager
+      securityManager (DefaultSecurityManager) {bean->
+        salt = 0x010222562L ; 
+      }
+
+
+
 
     }
 

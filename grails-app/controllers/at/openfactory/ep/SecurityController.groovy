@@ -38,11 +38,15 @@ class SecurityController {
       }
 
       log.info "login successful for $params.userid (${currentEntity?.name})"
-      redirect (uri:grailsApplication.config.secmgr.starturl ?:"/start", args:[$currentEntity:currentEntity])
+      def startUrl = grailsApplication.config.secmgr.starturl ?: "/start"
+      log.debug ("redirecting to 'starturl': $startUrl")
+      redirect (uri:startUrl, args:[entity:currentEntity])
     }
 
     def logout = {
+      Entity e = securityManager.getLoggedIn(request)
       securityManager.logout(request)
-      redirect (uri:grailsApplication.config.secmgr.secmgr.publicurl ?:"/", args:[userId:'otto-212'])
+      def pubUrl = grailsApplication.config.secmgr.publicurl ?: "/"
+      redirect (uri:pubUrl, args:[entity:e])
     }
 }
