@@ -1,5 +1,7 @@
 package obase
 
+import at.openfactory.ep.OBaseSecTagLib
+
 /**
  * this taglib provides access to the ubase 1.X ub: prefixed tags for compatibility reasons. usage of those
  * in new code is strongly discouraged.
@@ -9,9 +11,6 @@ package obase
 class UBaseAliasTagLib {
   static namespace = "ub"
 
-  // assetTagLib
-  def assetImage = {attrs-> ob.assetImage(attrs)}
-  def profileImage = {attrs-> ob.profileImage(attrs)}
 
   // coreTagLib
   def resource = {attrs->ob.resource(attrs)}

@@ -23,7 +23,7 @@ class OBaseAssetTagLib {
   }
 
   def profileImage = {attrs->
-    out << ub.assetImage (attrs + [type:'profile'])
+    out << assetImage (attrs + [type:'profile'])
   }
 
 }
