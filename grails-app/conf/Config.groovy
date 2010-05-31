@@ -88,7 +88,7 @@ log4j = {
     debug  'grails.app.service'
     debug  'grails.app.filters'
 
-    debug 'de.uenterprise.ep.ubase'
+    debug 'at.openfactory.ep.ubase'
 
 
 
