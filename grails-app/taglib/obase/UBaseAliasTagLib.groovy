@@ -18,10 +18,20 @@ class UBaseAliasTagLib {
   def ifGrailsEnv = {attrs, body->ob.ifGrailsEnv(attrs,body)}
 
   // secTagLib
-  def isAdmin = {attrs, body->ob.isAdmin(attrs,body)}
-  def notAdmin = {attrs, body->ob.notAdmin(attrs,body)}
-  def meOrAdmin = {attrs, body->ob.meOrAdmin(attrs,body)}
-  def notMe = {attrs, body->ob.notMe(attrs,body)}
-  def hasAllRoles = {attrs, body->ob.hasAllRoles(attrs,body)}
-  def hasNoRoles = {attrs, body->ob.hasNoRoles(attrs,body)}
+  def isAdmin = {attrs, body->
+    out      <<  ob.isAdmin(attrs,body)
+  }
+
+  def notAdmin = {attrs, body->out      << ob.notAdmin(attrs,body)}
+  def meOrAdmin = {attrs, body->out     << ob.meOrAdmin(attrs,body)}
+  def notMe = {attrs, body-> out        << ob.notMe(attrs,body)}
+  def hasAllRoles = {attrs, body-> out  << ob.hasAllRoles(attrs,body)}
+  def hasNoRoles = {attrs, body-> out   << ob.hasNoRoles(attrs,body)}
+
+  // assets
+  def assetImage = {attrs-> out << ob.assetImage(attrs)}
+  
+  def profileImage = {attrs-> out << ob.profileImage(attrs)}
+  
+
 }
