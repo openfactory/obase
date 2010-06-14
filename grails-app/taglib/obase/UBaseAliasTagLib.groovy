@@ -15,7 +15,7 @@ class UBaseAliasTagLib {
   // coreTagLib
   def resource = {attrs->ob.resource(attrs)}
   def entityName = {attrs->ob.entityName(attrs)}
-  def ifGrailsEnv = {attrs, body->ob.ifGrailsEnv(attrs,body)}
+  def ifGrailsEnv = {attrs, body-> out  << ob.ifGrailsEnv(attrs,body)}
 
   // secTagLib
   def isAdmin = {attrs, body->
