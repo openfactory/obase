@@ -1,8 +1,8 @@
-package de.uenterprise.ep
+package at.openfactory.ep
 
 import grails.test.*
 
-class AssetTests extends GrailsUnitTestCase {
+class AssetServiceTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
     }

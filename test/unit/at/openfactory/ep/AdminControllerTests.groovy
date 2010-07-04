@@ -1,8 +1,8 @@
-package de.uenterprise.ep
+package at.openfactory.ep
 
 import grails.test.*
 
-class DashboardControllerTests extends ControllerUnitTestCase {
+class AdminControllerTests extends ControllerUnitTestCase {
     protected void setUp() {
         super.setUp()
     }
