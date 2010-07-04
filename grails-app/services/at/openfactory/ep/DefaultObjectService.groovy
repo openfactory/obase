@@ -53,9 +53,9 @@ class DefaultObjectService {
     EntityType et = EntityType.findByName (name)
     if (!et) {
       et = new EntityType(name:name)
-      est.addToEntityTypes (et)
+      est?.addToEntityTypes (et)
       // need to save the owning side of the cascade
-      if (!est.save()) {
+      if (!est?.save()) {
         est.errors.each {log.error ("bootstrap validation error: $it")}
         throw new IllegalArgumentException("failed to bootstrap '$name' EntityType")
       }

@@ -1,6 +1,7 @@
 import org.codehaus.groovy.grails.commons.GrailsApplication
 import at.openfactory.ep.asset.FileSystemByteStore
 import at.openfactory.ep.security.DefaultSecurityManager
+import at.openfactory.ep.attr.DynAttrSet
 
 class ObaseGrailsPlugin {
     def version = "snapshot"
@@ -51,8 +52,16 @@ class ObaseGrailsPlugin {
     }
 
     def doWithDynamicMethods = { ctx ->
-        // TODO Implement registering dynamic methods to classes (optional)
+      application.domainClasses.each {domainClass ->
+        def metaProperty = domainClass.metaClass.getMetaProperty("dynattrs")
+        if (metaProperty)
+          log.info "==> amend dynattr access for: $domainClass"
+          domainClass.metaClass.getDas = {
+            new DynAttrSet(metaProperty.getProperty(delegate))
+          }
+      }
     }
+
 
     def onChange = { event ->
         // TODO Implement code that is executed when any artefact that this plugin is
