@@ -101,7 +101,7 @@ class AssetController {
       if (!result) 
         flash.message = 'uploading the asset went bad somehow'
 
-      [asset:result]
+      [asset:result, entity: ent]
     }
   }
 
