@@ -83,11 +83,11 @@ class AssetController {
         flash.message = "no such entity: '$params.entity"
         return [:] ;
       }
-      if (!secHelperService.isMeOrAdmin(ent)) {
+      /*if (!secHelperService.isMeOrAdmin(ent)) {
         flash.message = "you're not allowed to upload for others"
         redirect (controller:'login', action:'denied')
         return
-      }
+      }*/
     }
     ent = ent ?: entityHelperService.loggedIn;
 
