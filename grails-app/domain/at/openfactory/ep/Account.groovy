@@ -17,12 +17,14 @@ public class Account {
   boolean enabled
   Date    lastLogin
   Date    prevLogin
+  Date    lastAction
   Locale  locale ;
 
   static constraints = {
     email (email:true, nullable:false, blank:false, unique:true)
     lastLogin (nullable:true)
     prevLogin (nullable:true)
+    lastAction nullable: true
     locale    (nullable:true)
   }
 
