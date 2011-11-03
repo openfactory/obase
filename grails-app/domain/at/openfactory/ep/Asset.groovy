@@ -1,18 +1,18 @@
 package at.openfactory.ep
 
 class Asset {
-    static belongsTo = [entity:Entity]
+  static belongsTo = [entity: Entity]
 
-    AssetStorage storage
-    String type
+  AssetStorage  storage
+  String        type
+  Date          dateCreated
+  Date          lastUpdated
 
-    Date dateCreated
-    Date lastUpdated
+  static constraints = {
+  }
 
-    static constraints = {
-    }
+  String toString() {
+    "Asset: $id ($type)"
+  }
 
-    String toString() {
-      "Asset:$id ($type)"
-    }
 }

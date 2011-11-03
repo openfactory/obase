@@ -3,8 +3,8 @@ package at.openfactory.ep
  * User: mkuhl
  * Date: 25.05.2009
  * Time: 20:20:49
- * Description: THis is to hold installation and database specfic constants which will be used ONLY
- * during the bootstrap phase to decide what schould be done (initalize, migrate, etc)
+ * Description: This is to hold installation and database specific constants which will be used ONLY
+ * during the bootstrap phase to decide what should be done (initialize, migrate, etc)
  */
 
 public class EpSystem {

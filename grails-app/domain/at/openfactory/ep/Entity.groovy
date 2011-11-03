@@ -1,30 +1,24 @@
 package at.openfactory.ep
-/**
- * User: mkuhl
- * Date: 25.05.2009
- * Time: 19:47:14
- * Description:
- */
 
 public class Entity {
-  static hasMany = [tagslinks:EntityTagLink, assets:Asset]
 
-  EntityType type ;
+  static hasMany = [tagslinks: EntityTagLink, assets: Asset]
 
-  String name ;
-  Date dateCreated
-  Date lastUpdated
-
-  Account user ;
-  Profile profile ;
+  EntityType  type
+  String      name
+  Date        dateCreated
+  Date        lastUpdated
+  Account     user
+  Profile     profile
 
   static constraints = {
-    name(size:1..50)
-    user(nullable: true)
-    profile (nullable:true)
+    name    size: 1..50
+    user    nullable: true
+    profile nullable: true
   }
 
-
-  String toString() {"Entity:$name"}
+  String toString() {
+    "Entity: $name"
+  }
 
 }
