@@ -95,6 +95,11 @@ class AssetService {
           eq ('storage', store)
         }
       }
+      
+      // if the new asset is of type "profile" delete the existing (if any) asset of this type
+      if (type == "profile") {
+        Asset.findByEntityAndType(ent, "profile")?.delete()
+      }
 
       // only if it's not there, create a new one and link it with the storage
       if (!asset) {
@@ -111,6 +116,12 @@ class AssetService {
         asset.save()
       }
 
+      // also delete unreferenced asset storages
+      List ast = AssetStorage.list()
+      ast.each {AssetStorage assetStorage ->
+        if (assetStorage.assets.size() == 0)
+          assetStorage.delete()
+      }
 
       log.debug ("asset for $ent.name of type $type is stored as $sid")
       return asset
