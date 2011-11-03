@@ -1,9 +1,9 @@
 package at.openfactory.ep
 
-import at.openfactory.ep.security.SecurityManagerException;
+import at.openfactory.ep.security.SecurityManagerException
 
 class SecurityController {
-    def securityManager ;
+    def securityManager
 
     def index = {
 
@@ -15,26 +15,26 @@ class SecurityController {
 
     def do_login = {
       if (!params.userid) {
-        flash.message = g.message (code:"security.login.emptyuid");
+        flash.message = g.message (code:"security.login.emptyuid")
         redirect (action:"login", params:params)
         return 
       }
       if (!params.password) {
-        flash.message = g.message (code:"security.login.emptypwd");
+        flash.message = g.message (code:"security.login.emptypwd")
         redirect (action:"login", params:params)
         return
       }
 
       // actually do the login
       log.info ("start login for $params.userid")
-      Entity currentEntity = null ;
+      Entity currentEntity = null
       try {
-        currentEntity = securityManager.login (request, params.userid, params.password)  ;
+        currentEntity = securityManager.login (request, params.userid, params.password)
       }
       catch (SecurityManagerException sme) {
-        flash.message =  g.message (code:sme.code, args:[params.userid]);
+        flash.message =  g.message (code:sme.code, args:[params.userid])
         redirect (action:"login", params:params)
-        return ;
+        return
       }
 
       log.info "login successful for $params.userid (${currentEntity?.name})"

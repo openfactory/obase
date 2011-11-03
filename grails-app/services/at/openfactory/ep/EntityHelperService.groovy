@@ -69,7 +69,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
    * get Entity for currently logged in user account (if any)
    */
   Entity getLoggedIn (boolean authZByRoleUser = true) {
-    def Entity e = securityManager.getCurrentEntity() ;
+    def Entity e = securityManager.getCurrentEntity()
     if (e)
       e = Entity.get(e.id)
 
@@ -80,7 +80,7 @@ Entity createEntity (String name, EntityType type, Closure c=null) {
               return (e)
         }
       }
-      return null;
+      return null
     }
 
     return (e)

@@ -76,12 +76,12 @@ class AssetController {
       return
     }
 
-    Entity ent
+    Entity ent = null
     if (params.entity) {
       ent = Entity.findByName(params.entity)
       if (!ent) {
         flash.message = "no such entity: '$params.entity"
-        return [:] ;
+        return [:]
       }
       /*if (!secHelperService.isMeOrAdmin(ent)) {
         flash.message = "you're not allowed to upload for others"
@@ -89,7 +89,7 @@ class AssetController {
         return
       }*/
     }
-    ent = ent ?: entityHelperService.loggedIn;
+    ent = ent ?: entityHelperService.loggedIn
 
 
     MultipartFile asset = request.getFile ('asset')
@@ -101,7 +101,7 @@ class AssetController {
       if (!result) 
         flash.message = 'uploading the asset went bad somehow'
 
-      [asset:result, entity: ent]
+      [asset: result, entity: ent]
     }
   }
 

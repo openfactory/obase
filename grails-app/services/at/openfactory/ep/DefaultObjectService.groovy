@@ -29,7 +29,7 @@ class DefaultObjectService {
 
   def onEmptyDatabase (Closure c) {
     if (!EpSystem.count()) {
-      log.warn ("emtpy database. will install demo data set")
+      log.warn ("empty database. will install demo data set")
       new EpSystem(sysKey:"SCHEMA_VERSION", sysVal:"0").save()
       if (c) c.call()
       sessionFactory.currentSession.flush()
@@ -150,7 +150,7 @@ class DefaultObjectService {
     // create some actual entities
     entityHelperService.createEntityWithUserAndProfile ("franz", etKrocher, "franz@bbb.com", "Franz Franz and the Melody Boys") {Entity it->
       it.profile.tagline = "to be on top is our job"
-      it.profile.gender = 1 ;
+      it.profile.gender = 1
     }
 
     entityHelperService.createEntityWithUserAndProfile("detlef", etEmo, "detleft@aon.at", "Captain Sensible") {Entity ent->
