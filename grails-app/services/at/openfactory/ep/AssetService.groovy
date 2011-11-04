@@ -119,7 +119,7 @@ class AssetService {
       // also delete unreferenced asset storages
       List ast = AssetStorage.list()
       ast.each {AssetStorage assetStorage ->
-        if (assetStorage.assets.size() == 0)
+        if (assetStorage?.assets?.size() == 0)
           assetStorage.delete()
       }
 
