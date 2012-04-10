@@ -25,7 +25,7 @@ class ObaseGrailsPlugin {
     def doWithSpring = {
       // initialize asset store
       def storeDir = ((GrailsApplication)application).config.at.openfactory.ep.assetStore
-      storeDir = storeDir ?: "${System.properties.'user.home'}/.${application.metadata.'app.name'}/assets"
+      storeDir = storeDir ?: "${System.properties.'user.home'}/.${application.metadata.'app.name'}/.${application.config.customer}/assets"
       println ("STORE-ROOT: $storeDir")
       log.info ("installing FileSystemByteStore as default assetStore with storeRoot: $storeDir")
 
